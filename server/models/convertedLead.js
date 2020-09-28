@@ -41,6 +41,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'result'
         },
+        createdLeadId:{
+            type:DataTypes.INTEGER(11).UNSIGNED,
+            field:'created_lead_id',
+        },
 
 
         quoteOrInvoice:{
@@ -76,6 +80,8 @@ module.exports = function (sequelize, DataTypes) {
        
         ConvertedLead.associate = function(models) {
             ConvertedLead.belongsTo(models.CreateLead, { foreignKey: 'createdLeadId'})
+            ConvertedLead.hasMany(models.CustomerProfile, { foreignKey: 'convertedLeadId' })
+
     }
 
     return ConvertedLead

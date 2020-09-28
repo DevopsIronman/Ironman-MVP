@@ -13,37 +13,88 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Home',
+      url: '/product',
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Products',
+      icon: 'cube',
+      children: [
+        {
+          title: 'Breakers',
+          url: '/product',
+        },
+        {
+          title: 'Breakers Purchased',
+          url: '/product-purchased',
+        },
+      ]
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Lead Management',
+      icon: 'person-add',
+      children: [
+        {
+          title: 'Create Lead',
+          url: '/new-lead',
+        },
+        {
+          title: 'Leads',
+          url: '/existing-lead',
+        },
+      ]
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Customers',
+      icon: 'people',
+      children: [
+        {
+          title: 'Customers List',
+          url: '/existing-customers',
+        },
+        {
+          title: 'Customer Enquiry',
+          url: '/customer-enquiry',
+        },
+      ]
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'All Orders',
+      url: '/orders',
+      icon: 'cart'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
+      title: 'All service',
+     icon: 'construct',
+     children: [
+      {
+        title: 'Service History',
+        url: '/service-history',
+      },
+      {
+        title: 'Due for Service',
+        url: '/service-due',
+      },
+    ]
+    },
+    {
+      title: 'Abous Us',
+      url: '/about-us',
+      icon: 'information-circle'
+    },
+    {
+      title: 'Contact Us',
+      url: '/contact-us',
+      icon: 'call'
+    },
+    {
+      title: 'Privacy Policy',
+      url: '/privacy-policy',
       icon: 'warning'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  public labels = [];
 
   constructor(
     private platform: Platform,
@@ -61,9 +112,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    }
+    // const path = window.location.pathname.split('menu/')[1];
+    // if (path !== undefined) {
+    //   this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+    // }
   }
 }

@@ -13,6 +13,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'purchase_order'
         },
+        quantity : {
+            type: DataTypes.STRING(250),
+            field: 'quantity'
+        },
         paymentType: {
             type: DataTypes.STRING(250),
             field: 'payment_type'
@@ -20,6 +24,14 @@ module.exports = function (sequelize, DataTypes) {
         deliveryTypeTime: {
             type: DataTypes.STRING(250),
             field: 'delivery_type_time'
+        },
+        createdLeadId:{
+            type:DataTypes.INTEGER(11).UNSIGNED,
+            field:'created_lead_id',
+        },
+        convertedLeadId:{
+            type:DataTypes.INTEGER(11).UNSIGNED,
+            field:'converted_lead_id',
         },
         techLead: {
             type: DataTypes.STRING(250),
@@ -30,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
             field: 'service_report'
         },
         customerFeedback: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING(250),
             field: 'cust_feedback'
         },
         createdBy: {

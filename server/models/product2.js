@@ -57,7 +57,7 @@ module.exports = function (sequelize, DataTypes) {
 
        
         Product2.associate = function(models) {
-            Product2.hasMany(models.CustomerOrders, { foreignKey: 'prd1Id'})
+            // Product2.hasMany(models.CustomerOrders, { foreignKey: 'prd1Id'})
     }
 
     return Product2

@@ -23,6 +23,14 @@ models.Product2.sync();
 models.Product3.sync();
 models.Product4.sync();
 models.Product5.sync();
+
+Object.keys(models).forEach(modelName => {
+    if ('associate' in models[modelName]) {
+        models[modelName].associate(models)
+    }
+})
+
+
 models.Sequelize = Sequelize
 models.sequelize = sequelize
 

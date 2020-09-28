@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Leads</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let lead of leads">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-avatar >
+        {{lead.customerName[0]}}
+      </ion-avatar>  <ion-label>{{lead.customerName}}</ion-label>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+      <span style="float: left;">
+        <ion-icon name="location-outline"></ion-icon>
+        {{lead.customerLocation}}
+      </span>
+      <span style="float: right;">
+        <ion-icon name="call-outline"></ion-icon>
+        {{lead.mobileNo}}
+      </span>
+      <span style="float: left;">
+        <ion-icon name="mail-outline"></ion-icon>
+        {{lead.mailId}}
+      </span>
+      <span style="float: right;">
+        <ion-icon name="person-outline"></ion-icon>
+        {{lead.leadAssignedTo}}
+      </span>
+  </ion-card-content>
+ 
+</ion-card>
+
+  
+
+</ion-content>
