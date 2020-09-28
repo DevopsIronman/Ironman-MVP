@@ -1,0 +1,116 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Create Lead</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card >
+  
+    <!-- <div>
+<div id="crumbs">
+      <ul>
+        <li><a href="#">Step 1</a></li>
+      </ul>
+    </div>
+
+    </div> -->
+    
+<div class="column">
+
+
+    <!--  -->
+
+    <div></div><br>
+<form name="leadForm" [formGroup]="leadForm" >
+    <ion-item style="width: 100%;">
+      
+      
+      <ion-label position="floating">Customer Name</ion-label>
+      <ion-input formControlName="customerName" ></ion-input>
+    </ion-item>  
+    <ion-item >
+      <ion-label position="floating">Customer Location</ion-label>
+      <ion-input formControlName="customerLocation"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Mobile No.</ion-label>
+      <ion-input formControlName="mobileNo"></ion-input>
+    </ion-item>  
+
+   
+    <ion-item >
+      <ion-label position="floating">Mail Id</ion-label>
+      <ion-input formControlName="mailId"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Breaking Size variety</ion-label>
+      <ion-input formControlName="breakingSizeVariety"></ion-input>
+    </ion-item>  
+
+    <ion-item >
+      <ion-label position="floating">Excavator Model</ion-label>
+      <!-- <ion-input formControlName="excavatorModel"> -->
+        <ion-select  formControlName="excavatorModel">
+          <ion-select-option value="Excavator Model 1">Excavator Model 1</ion-select-option>
+          <ion-select-option value="Excavator Model 2">Excavator Model 2</ion-select-option>
+        </ion-select>
+      <!-- </ion-input> -->
+      
+    </ion-item>
+
+
+    <ion-item >
+      <ion-label position="floating">Back Loader</ion-label>
+     <ion-input formControlName="backLoader">
+       <ion-select >
+          <ion-select-option value="Back Loader 1">Back Loader 1</ion-select-option>
+          <ion-select-option value="Back Loader 2">Back Loader 2</ion-select-option>
+        </ion-select>
+     </ion-input> 
+    </ion-item>
+    
+  
+    <ion-item >
+      <ion-label position="floating">Machine Capacity</ion-label>
+      <ion-input formControlName="machineCapacity"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Machine Make & Model</ion-label>
+      <ion-input formControlName="machineMakeModel"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Existing Breaker</ion-label>
+      <ion-input formControlName="existingbreaker"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Pipelines</ion-label>
+      <ion-input formControlName="pipelines"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label position="floating">Lead Assigned</ion-label>
+    <ion-input formControlName="leadAssignedTo"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label position="floating">Converted Status</ion-label>
+  <ion-input formControlName="convertedStatus"></ion-input>
+</ion-item>
+
+    <div class="btn">
+
+     <ion-button shape="round"> Cancel <ion-icon name="close-circle-outline"></ion-icon></ion-button>
+       <ion-button shape="round" (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button> 
+      <ion-button shape="round" (click)="submit('new')"routerLink="/convert-lead" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
+    </div>
+
+  </form>
+  </div>
+
+  </ion-card>
+
+</ion-content>

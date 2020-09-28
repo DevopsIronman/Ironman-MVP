@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Customers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!-- <ion-card *ngFor="let customer of customers; let i = index">
+  <ion-card-header>
+    <ion-card-title>
+      <ion-avatar >
+       
+      </ion-avatar>  <ion-label>{{customer.customerName}}</ion-label>
+    </ion-card-title>
+    <ion-icon name="chevron-down-outline" (click)='view(i)'></ion-icon>
+  </ion-card-header>
+  <ion-card-content *ngIf= customer?.open>
+      <span style="float: left;">
+        <ion-icon name="location-outline"></ion-icon>
+        {{customer.customerLocation}}
+      </span>
+      <span style="float: right;">
+        <ion-icon name="call-outline"></ion-icon>
+        {{customer.mobileNo}}
+      </span>
+      <span style="float: left;">
+        <ion-icon name="mail-outline"></ion-icon>
+        {{customer.mailId}}
+      </span>
+      
+      <span >
+        product prchased:
+        <ion-icon name="person-outline"></ion-icon>
+        {{customer.productsOrdered}}
+      </span>
+  </ion-card-content>
+ 
+</ion-card> -->
+<ion-list>
+<div *ngFor="let customer of customers; let i = index">
+
+  <ion-item class="contact">
+    <ion-avatar >
+      <img src="assets/images/avatar.svg">
+    </ion-avatar>
+    <ion-label style="padding-left: 11px;"> <h3>{{customer.customerName}}</h3>
+      <p> {{customer.address}}</p>
+    </ion-label>
+    
+      <ion-icon *ngIf= !customer.open name="chevron-down-outline" (click)='view(i)'></ion-icon>
+      <ion-icon *ngIf= customer.open name="chevron-up-outline" (click)='viewtoggle(i)'></ion-icon>
+    </ion-item>
+       <ion-item *ngIf= customer?.open>
+         <ion-label>
+           <p>product purchased :  {{customer.productsOrdered}} </p>
+           <p>Quantity :  {{customer.quantity}} </p>
+           <p>service Due :  {{customer.serviceDue | date}} </p>
+           <p>contact :  {{customer.mobileNo}} </p>
+          </ion-label>
+       </ion-item>
+        
+</div>
+
+
+</ion-list>  
+
+</ion-content>

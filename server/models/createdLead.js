@@ -30,11 +30,11 @@ module.exports = function (sequelize, DataTypes) {
             field: 'back_loader'
         },
         machineCapacity: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING(250),
             field: 'machine_capacity'
         },
         machineMakeModel: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING(250),
             field: 'machine_make_model'
         },
         existingBreaker: {
@@ -92,6 +92,7 @@ module.exports = function (sequelize, DataTypes) {
 
         CreateLead.associate = function (models) {
             CreateLead.hasMany(models.ConvertedLead, { foreignKey: 'createdLeadId' })
+            CreateLead.hasMany(models.CustomerProfile, { foreignKey: 'createdLeadId' })
             // CreateLead.hasMany(models.PlanAbstract, { foreignKey: 'drgId' })
             // CreateLead.hasMany(models.MarketPurchase, { foreignKey: 'drgId' })
 

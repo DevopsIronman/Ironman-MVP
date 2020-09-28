@@ -26,6 +26,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'products_ordered'
         },
+        serviceDue: {
+            type: DataTypes.DATE,
+            field: 'service_due'
+        },
+        serviceFrequency: {
+            type: DataTypes.STRING(250),
+            field: 'service_frequency'
+        },
         quantity: {
             type: DataTypes.INTEGER(11),
             field: 'quantity'
@@ -61,11 +69,11 @@ module.exports = function (sequelize, DataTypes) {
 
        
         CustomerOrders.associate = function(models) {
-            CustomerOrders.belongsTo(models.Product1, { foreignKey: 'prd1Id'})
-            CustomerOrders.belongsTo(models.Product2, { foreignKey: 'prd2Id'})
-            CustomerOrders.belongsTo(models.Product3, { foreignKey: 'prd3Id'})
-            CustomerOrders.belongsTo(models.Product4, { foreignKey: 'prd4Id'})
-            CustomerOrders.belongsTo(models.Product5, { foreignKey: 'prd5Id'})
+            // CustomerOrders.belongsTo(models.Product1, { foreignKey: 'prd1Id'})
+            // CustomerOrders.belongsTo(models.Product2, { foreignKey: 'prd2Id'})
+            // CustomerOrders.belongsTo(models.Product3, { foreignKey: 'prd3Id'})
+            // CustomerOrders.belongsTo(models.Product4, { foreignKey: 'prd4Id'})
+            // CustomerOrders.belongsTo(models.Product5, { foreignKey: 'prd5Id'})
             
     }
 

@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>convert Lead</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card  >
+  
+   
+    
+<div class="column">
+
+
+    <!--  -->
+
+    <div></div><br>
+    <form name="leadForm" [formGroup]="leadForm" >
+
+    <ion-item style=" width: 100%;">
+      
+      
+      <ion-label position="floating">Recommended Breaker</ion-label>
+      <ion-input  formControlName="recommendedBreaker"></ion-input>
+    </ion-item>  
+    <ion-item >
+      <ion-label position="floating">Price</ion-label>
+      <ion-input formControlName="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Warranty</ion-label>
+      <ion-input formControlName="warranty"></ion-input>
+    </ion-item>  
+
+   
+    <ion-item >
+      <ion-label position="floating">Service Frequency</ion-label>
+      <ion-input formControlName="serviceFrequency"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Lead</ion-label>
+      <ion-input formControlName="lead"></ion-input>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Machine capacity</ion-label>
+      <ion-input formControlName="machineCapacity"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Follow Up Task</ion-label>
+      <ion-input formControlName="followUpTask"></ion-input>
+    </ion-item>  
+
+    <ion-item >
+      <ion-label position="floating">Result</ion-label>
+      <ion-input formControlName="result"></ion-input>
+    </ion-item>
+
+
+    <ion-item >
+      <ion-label position="floating">Quote / Invoice</ion-label>
+      <!-- <ion-input formControlName="quoteOrInvoice"> -->
+        <ion-select formControlName="quoteOrInvoice">
+          <ion-select-option value="yes">YES</ion-select-option>
+          <ion-select-option value="no">NO</ion-select-option>
+        </ion-select>
+      <!-- </ion-input> -->
+
+    </ion-item>
+    
+  
+    
+ 
+
+    <div class="btn">
+
+      <ion-button shape="round" routerLink="/new-lead" routerDirection="forward"><ion-icon name="arrow-undo-circle-outline"></ion-icon>Cancel </ion-button>
+      <ion-button shape="round" (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button>  
+      <ion-button shape="round" (click)="submit('customer')"routerLink="/create-customer" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
+
+    </div>
+
+  </form>
+  </div>
+
+  </ion-card>
+
+</ion-content>

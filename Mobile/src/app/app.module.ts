@@ -8,18 +8,31 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule ,FormsModule  } from '@angular/forms';
+
+import { HttpClientModule } from '@angular/common/http';
+
+ import { HTTP } from '@ionic-native/http/ngx'; 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    // IonTextAvatar,
+    ],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    
+    SplashScreen,HTTP,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
