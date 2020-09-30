@@ -72,6 +72,10 @@ const routes: Routes = [
     path: 'create-customer',
     loadChildren: () => import('./newLead/create-customer/create-customer.module').then( m => m.CreateCustomerPageModule)
   },
+  {
+    path: 'customerdetails',
+    loadChildren: () => import('./customers/customerdetails/customerdetails.module').then( m => m.CustomerdetailsPageModule)
+  },
   
   
 ];

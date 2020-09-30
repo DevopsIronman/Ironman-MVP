@@ -57,7 +57,7 @@ module.exports = function (sequelize, DataTypes) {
 
         
         mobileNo:{
-            type:DataTypes.INTEGER(11),
+            type:DataTypes.STRING(10),
             field:'mobile_no',
         },
         mailId:{
