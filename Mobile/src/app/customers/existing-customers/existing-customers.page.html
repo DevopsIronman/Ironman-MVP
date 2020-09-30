@@ -59,6 +59,7 @@
            <p>Quantity :  {{customer.quantity}} </p>
            <p>service Due :  {{customer.serviceDue | date}} </p>
            <p>contact :  {{customer.mobileNo}} </p>
+           <a style="float:right" [routerLink]="['/customerdetails']" [queryParams]="{ id: customer.id, serviceDue: customer.serviceDue }">view more</a>
           </ion-label>
        </ion-item>
         

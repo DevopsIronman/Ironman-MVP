@@ -39,7 +39,7 @@ module.exports = function (sequelize, DataTypes) {
             field: 'quantity'
         },
         mobileNo: {
-            type: DataTypes.INTEGER(11),
+            type: DataTypes.STRING(11),
             field: 'mobile_no'
         },
         createdBy: {

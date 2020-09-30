@@ -41,6 +41,21 @@ router.get('/customer', (req, res) => {
     })
 })
 
+router.get('/customerDetails/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        CustomerOrders.findOne({ where: { deleteStatus: false , id:req.params.id },  }).then(function (custResult) {
+            CreateLead.findOne({ where: { deleteStatus: false,  customerName:  custResult.customerName, mobileNo: custResult.mobileNo}, include: [ConvertedLead, CustomerProfile ], }).then(function (result) {
+                sendSuccess(res, result);
+            }).catch(function (err) {
+                sendError(res, err);
+            }); 
+            // sendSuccess(res, custResult);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
 router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
         req.body.convertedStatus = "new";
