@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class LeadService {
 
-  public API_URL = 'http://192.168.43.120:8080';
+  public API_URL = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
 
   private extractData1(res: any) {
@@ -26,6 +26,11 @@ export class LeadService {
       map(this.extractData1));
   }
   
+  getCustomerDetails(id): Observable<any> {
+    return this.http.get<any>(this.API_URL+'/api/createLead/customerDetails/'+ id).pipe(
+      map(this.extractData1));
+  }
+
   getCustomerDetails(id): Observable<any> {
     return this.http.get<any>(this.API_URL+'/api/createLead/customerDetails/'+ id).pipe(
       map(this.extractData1));

@@ -12,8 +12,6 @@ import { ReactiveFormsModule ,FormsModule  } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
- import { HTTP } from '@ionic-native/http/ngx'; 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     
-    SplashScreen,HTTP,
+    SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

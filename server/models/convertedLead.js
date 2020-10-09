@@ -9,10 +9,7 @@ module.exports = function (sequelize, DataTypes) {
             primaryKey: true,
             allowNull: false
         },
-        recommendedBreaker: {
-            type: DataTypes.STRING(250),
-            field: 'recommended_breaker'
-        },
+        
         price: {
             type: DataTypes.STRING(250),
             field: 'price'
@@ -25,14 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'service_frequency'
         },
-        lead: {
-            type: DataTypes.STRING(250),
-            field: 'lead'
-        },
-        machineCapacity: {
-            type: DataTypes.DATE,
-            field: 'machine_capacity'
-        },
+        
         followUpTask: {
             type: DataTypes.DATE,
             field: 'follow_up_task'
