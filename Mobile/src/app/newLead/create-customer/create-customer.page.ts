@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 import {LeadService} from '../../service/lead.service'
 import { Router } from '@angular/router';
 
-import { HTTP } from '@ionic-native/http/ngx';
 
 @Component({
   selector: 'app-create-customer',
@@ -13,18 +12,26 @@ import { HTTP } from '@ionic-native/http/ngx';
 export class CreateCustomerPage implements OnInit {
   leadForm: any;
   constructor( private router: Router, private _formBuilder: FormBuilder, public leadService: LeadService,
-    public http:HTTP ) { }
+    ) { }
 
   ngOnInit() {
     this.leadForm = this._formBuilder.group({
       purchaseOrder: new FormControl(),
       quantity: new FormControl(),
+      advance: new FormControl(),
+      remaining: new FormControl(),
       paymentType: new FormControl(),
       deliveryTypeTime: new FormControl(),
       techLead: new FormControl(),
       serviceReport: new FormControl(),
       customerFeedback: new FormControl(),
       });
+       }
+
+  remainingCalc(event) {
+    let remaining = parseInt(localStorage.getItem('price')) - parseInt(event.target.value);
+    this.leadForm.controls["remaining"].setValue(remaining);
+ 
   }
 
   submit() {

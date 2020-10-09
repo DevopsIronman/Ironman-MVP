@@ -17,6 +17,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'quantity'
         },
+        advance : {
+            type: DataTypes.STRING(250),
+            field: 'advance'
+        },
+        remaining : {
+            type: DataTypes.STRING(250),
+            field: 'remaining'
+        },
         paymentType: {
             type: DataTypes.STRING(250),
             field: 'payment_type'

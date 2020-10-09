@@ -14,12 +14,12 @@ export class ConvertLeadPage implements OnInit {
 
   ngOnInit() {
     this.leadForm = this._formBuilder.group({
-      recommendedBreaker: new FormControl(),
+      // recommendedBreaker: new FormControl(),
       price: new FormControl(),
       warranty: new FormControl(),
       serviceFrequency: new FormControl(),
-      lead: new FormControl(),
-      machineCapacity: new FormControl(),
+      // lead: new FormControl(),
+      // machineCapacity: new FormControl(),
       followUpTask: new FormControl(),
       result: new FormControl(),
       quoteOrInvoice: new FormControl(),
@@ -28,6 +28,7 @@ export class ConvertLeadPage implements OnInit {
 
   submit(data) {
     let id = localStorage.getItem('newLeadId');
+    localStorage.setItem('price', this.leadForm.value.price);
     let convertedData = this.leadForm.value;
     convertedData.createdLeadId  = id;
     this.leadService.convertLead(convertedData).subscribe((res: any) => {

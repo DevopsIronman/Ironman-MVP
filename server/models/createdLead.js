@@ -13,9 +13,29 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'customer_name'
         },
-        customerLocation: {
+        companyName: {
             type: DataTypes.STRING(250),
-            field: 'customer_location'
+            field: 'company_name'
+        },
+        address: {
+            type: DataTypes.STRING(250),
+            field: 'address'
+        },
+        city: {
+            type: DataTypes.STRING(250),
+            field: 'city'
+        },
+        state: {
+            type: DataTypes.STRING(250),
+            field: 'state'
+        },
+        pincode: {
+            type: DataTypes.STRING(250),
+            field: 'pincode'
+        },
+        gstIn: {
+            type: DataTypes.STRING(250),
+            field: 'gst_in'
         },
         breakingSizeVariety: {
             type: DataTypes.STRING(250),
@@ -25,9 +45,9 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'excavator_model'
         },
-        backLoader: {
+        backhoeLoader: {
             type: DataTypes.STRING(250),
-            field: 'back_loader'
+            field: 'backhoe_loader'
         },
         machineCapacity: {
             type: DataTypes.STRING(250),
@@ -50,6 +70,10 @@ module.exports = function (sequelize, DataTypes) {
             type:DataTypes.STRING(250),
             field:'lead_assigned_to',
         },
+        leadAssigned:{
+            type:DataTypes.STRING(250),
+            field:'lead_assigned_to',
+        },
         convertedStatus:{
             type:DataTypes.STRING(250),
             field:'converted_status',
@@ -60,14 +84,26 @@ module.exports = function (sequelize, DataTypes) {
             type:DataTypes.STRING(10),
             field:'mobile_no',
         },
+        mobileNo2:{
+            type:DataTypes.STRING(10),
+            field:'mobile_no2',
+        },
         mailId:{
             type:DataTypes.STRING(250),
             field:'mail_id',
+        },
+        mailId:{
+            type:DataTypes.STRING(250),
+            field:'mail_id2',
         },
         
         createdBy: {
             type: DataTypes.STRING(50),
             field: 'created_by'
+        },
+        recommendedBreaker: {
+            type: DataTypes.STRING(50),
+            field: 'recommended_breaker'
         },
         updatedBy: {
             type: DataTypes.STRING(50),
