@@ -1,7 +1,7 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router()
 
-const { CreateLead , ConvertedLead, CustomerOrders, CustomerProfile} = require('../models');
+const { CreateLead , ConvertedLead, Ticket, CustomerOrders, CustomerProfile} = require('../models');
 // const {convertedLead} = require('../models');
 
 function sendError(res, err) {
@@ -25,6 +25,24 @@ function sendSuccess(res, result) {
 router.get('/', (req, res) => {
     return new Promise((resolve, reject) => {
         CreateLead.findAll({ where: { deleteStatus: false, convertedStatus: ["new", "converted"] },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+router.get('/lead/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        CreateLead.findAll({ where: { deleteStatus: false, id: req.params.id },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+router.get('/ConvertedLead/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        ConvertedLead.findAll({ where: { deleteStatus: false, createdLeadId: req.params.id },  }).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -67,11 +85,42 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/updateNewLead/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        // req.body.convertedStatus = "new";
+        CreateLead.update(req.body , { where: { id: req.params.id } }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    });
+});
+
+router.put('/updateConvertedLead/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        // req.body.convertedStatus = "new";
+        ConvertedLead.update(req.body , { where: { id: req.params.id } }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    });
+});
+
 router.post('/convertLead', (req, res) => {
     return new Promise((resolve, reject) => {
-        CreateLead.update({convertedStatus: "converted"}, { where: { id: req.body.createdLeadId } }).then(function (result) {
+        CreateLead.update({convertedStatus: "converted"}, { where: { id: req.body.createdLeadId } }).then(function (leadResult) {
             ConvertedLead.create(req.body).then(function (result) {
-              sendSuccess(res, result);
+            //   sendSuccess(res, result);
+            if(result.callBack =='yes') {
+                data ={
+                    convertedLeadId: result.id,
+                    createdLeadId: req.body.createdLeadId,
+                }
+                data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
+                Ticket.create(data).then(function (res) {
+                    sendSuccess(res, result);
+                })           }
             }).catch(function (err) {
                sendError(res, err);
             });
@@ -92,13 +141,23 @@ router.post('/customerProfile', (req, res) => {
                         let serviceDue = date.toISOString();
                     
                         customerdetails ={
+                            createdLeadId: req.body.createdLeadId,
                             customerName: Leadresult.customerName,
+                            companyName: Leadresult.companyName,
                             address: Leadresult.customerLocation,
-                            productsOrdered : result.purchaseOrder,
+                            city: Leadresult.city,
+                            state: Leadresult.state,
+                            pincode: Leadresult.pincode,
+                            gstIn: Leadresult.gstIn,
+                            productsOrdered : result.productName,
+                            serviceFrequency : convResult.serviceFrequency,
+                            price : convResult.price,
                             serviceFrequency : convResult.serviceFrequency,
                             mobileNo : Leadresult.mobileNo,
                             serviceDue: serviceDue,
-                            quantity: result.quantity
+                            quantity: result.quantity,
+                            advance: result.advance,
+                            remaining: result.remaining
                         }
                         
                         CustomerOrders.create(customerdetails).then(function (custresult) {

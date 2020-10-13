@@ -33,8 +33,24 @@
       <ion-input formControlName="purchaseOrder"></ion-input>
     </ion-item>  
     <ion-item >
+      <ion-label position="floating">Product Name</ion-label>
+      <ion-input formControlName="productName"></ion-input>
+    </ion-item>  
+    <ion-item >
       <ion-label position="floating">Quantity</ion-label>
-      <ion-input formControlName="quantity"></ion-input>
+      <!-- <ion-input formControlName="quantity"></ion-input> -->
+      <ion-select  formControlName="quantity">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="6">6</ion-select-option>
+        <ion-select-option value="7">7</ion-select-option>
+        <ion-select-option value="8">8</ion-select-option>
+        <ion-select-option value="9">9</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+      </ion-select>
     </ion-item>  
     <ion-item >
       <ion-label position="floating">Advance Paid</ion-label>
@@ -58,7 +74,7 @@
 
     <ion-item>
       <ion-label position="floating">Delivery Type/Time</ion-label>
-      <ion-input formControlName="deliveryTypeTime"></ion-input>
+      <!-- <ion-input formControlName="deliveryTypeTime"></ion-input> -->
       <ion-select  formControlName="deliveryTypeTime">
         <ion-select-option value="On Road">On Road</ion-select-option>
       </ion-select>

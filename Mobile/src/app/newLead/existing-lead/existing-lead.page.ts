@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {LeadService} from '../../service/lead.service'
 
 @Component({
@@ -8,15 +9,23 @@ import {LeadService} from '../../service/lead.service'
 })
 export class ExistingLeadPage implements OnInit {
   leads: any;
-  constructor(public leadService: LeadService) { }
+  count = 0
+  constructor(public leadService: LeadService,private router: Router) { }
 
   ngOnInit() {
     this.leadService.getLead().subscribe((res: any) => {
       console.log(res)
       if (res.success) {
         this.leads = res.data;
+        this.count = this.leads.length;
       }
     });
+  }
+
+  leadCall(lead) {
+    localStorage.setItem("editLeadId", lead.id);
+    // this.router.navigate(['/new-lead']);
+    console.log(lead)
   }
 
 }

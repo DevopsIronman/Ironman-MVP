@@ -13,6 +13,7 @@ models.Product2 = require("./product2.js")(sequelize, Sequelize);
 models.Product3 = require("./product3.js")(sequelize, Sequelize);
 models.Product4 = require("./product4.js")(sequelize, Sequelize);
 models.Product5 = require("./product5.js")(sequelize, Sequelize);
+models.Ticket = require("./ticket.js")(sequelize, Sequelize);
 // models.SampleData.sync();
 models.CreateLead.sync();
 models.ConvertedLead.sync();
@@ -23,6 +24,7 @@ models.Product2.sync();
 models.Product3.sync();
 models.Product4.sync();
 models.Product5.sync();
+models.Ticket.sync();
 
 Object.keys(models).forEach(modelName => {
     if ('associate' in models[modelName]) {

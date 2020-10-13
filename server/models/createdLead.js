@@ -129,8 +129,7 @@ module.exports = function (sequelize, DataTypes) {
         CreateLead.associate = function (models) {
             CreateLead.hasMany(models.ConvertedLead, { foreignKey: 'createdLeadId' })
             CreateLead.hasMany(models.CustomerProfile, { foreignKey: 'createdLeadId' })
-            // CreateLead.hasMany(models.PlanAbstract, { foreignKey: 'drgId' })
-            // CreateLead.hasMany(models.MarketPurchase, { foreignKey: 'drgId' })
+            CreateLead.hasMany(models.Ticket, { foreignKey: 'createdLeadId' })
 
     }
   

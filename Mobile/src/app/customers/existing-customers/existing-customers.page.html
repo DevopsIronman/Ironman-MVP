@@ -3,6 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-badge color="success" slot="end"> {{count}} Customer(s)</ion-badge>
     <ion-title>Customers</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -47,7 +48,7 @@
       <img src="assets/images/avatar.svg">
     </ion-avatar>
     <ion-label style="padding-left: 11px;"> <h3>{{customer.customerName}}</h3>
-      <p> {{customer.address}}</p>
+      <p> {{customer.companyName}}</p>
     </ion-label>
     
       <ion-icon *ngIf= !customer.open name="chevron-down-outline" (click)='view(i)'></ion-icon>
@@ -55,6 +56,7 @@
     </ion-item>
        <ion-item *ngIf= customer?.open>
          <ion-label>
+           <p>Address :  {{customer.city}} </p>
            <p>product purchased :  {{customer.productsOrdered}} </p>
            <p>Quantity :  {{customer.quantity}} </p>
            <p>service Due :  {{customer.serviceDue | date}} </p>

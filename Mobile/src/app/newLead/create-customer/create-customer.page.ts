@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 import {LeadService} from '../../service/lead.service'
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-create-customer',
   templateUrl: './create-customer.page.html',
@@ -17,6 +16,7 @@ export class CreateCustomerPage implements OnInit {
   ngOnInit() {
     this.leadForm = this._formBuilder.group({
       purchaseOrder: new FormControl(),
+      productName: new FormControl(),
       quantity: new FormControl(),
       advance: new FormControl(),
       remaining: new FormControl(),

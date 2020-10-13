@@ -73,7 +73,7 @@
     </ion-item>
     <ion-item >
       <ion-label position="floating">Mail Id 2</ion-label>
-      <ion-input formControlName="mailId2"></ion-input>
+      <ion-input ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -85,8 +85,8 @@
       <ion-label position="floating">Excavator Model</ion-label>
       <!-- <ion-input formControlName="excavatorModel"> -->
         <ion-select  formControlName="excavatorModel">
-          <ion-select-option value="Excavator Model 1">Excavator Model 1</ion-select-option>
-          <ion-select-option value="Excavator Model 2">Excavator Model 2</ion-select-option>
+          <ion-select-option value="Excavator Model 1">Excavator </ion-select-option>
+          <ion-select-option value="Excavator Model 2">Mini Excavator</ion-select-option>
         </ion-select>
       <!-- </ion-input> -->
       
@@ -131,11 +131,13 @@
         <ion-select-option value="JCB JS 205">JCB JS 205</ion-select-option>
         <ion-select-option value="JCB JS 215">JCB JS 215</ion-select-option>
         <ion-select-option value="JCB JS 220">JCB JS 220</ion-select-option>
+        <ion-select-option value="JCB">JCB</ion-select-option>
+        <ion-select-option value="CAT">CAT</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item >
       <ion-label position="floating">Existing Breaker</ion-label>
-      <ion-select formControlName="existingbreaker">
+      <ion-select formControlName="existingBreaker">
         <ion-select-option value="Rock Breaker 1">Rock Breaker 1</ion-select-option>
         <ion-select-option value="Rock Breaker 2">Rock Breaker 2</ion-select-option>
       </ion-select>
@@ -178,7 +180,7 @@
 
      <ion-button shape="round"> Cancel <ion-icon name="close-circle-outline"></ion-icon></ion-button>
        <ion-button shape="round" (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button> 
-      <ion-button shape="round" (click)="submit('new')"routerLink="/convert-lead" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
+      <ion-button shape="round" (click)="submit('new')" [routerLink]="['/convert-lead']"  [queryParams]="{ lead: leadId}" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
     </div>
 
   </form>
