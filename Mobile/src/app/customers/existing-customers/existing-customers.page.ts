@@ -8,6 +8,7 @@ import {LeadService} from '../../service/lead.service'
 })
 export class ExistingCustomersPage implements OnInit {
   customers: any;
+  count=0;
   constructor(public leadService: LeadService) { }
 
   ngOnInit() {
@@ -15,6 +16,7 @@ export class ExistingCustomersPage implements OnInit {
       console.log(res)
       if (res.success) {
         this.customers = res.data;
+        this.count = this.customers.length;
       }
     });
   }

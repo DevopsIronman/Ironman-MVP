@@ -14,9 +14,29 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'customer_name'
         },
+        companyName: {
+            type: DataTypes.STRING(250),
+            field: 'company_name'
+        },
         address: {
             type: DataTypes.STRING(250),
             field: 'address'
+        },
+        city: {
+            type: DataTypes.STRING(250),
+            field: 'city'
+        },
+        state: {
+            type: DataTypes.STRING(250),
+            field: 'state'
+        },
+        pincode: {
+            type: DataTypes.STRING(250),
+            field: 'pincode'
+        },
+        gstIn: {
+            type: DataTypes.STRING(250),
+            field: 'gst_in'
         },
         geoLocation: {
             type: DataTypes.STRING(250),
@@ -37,6 +57,22 @@ module.exports = function (sequelize, DataTypes) {
         quantity: {
             type: DataTypes.INTEGER(11),
             field: 'quantity'
+        },
+        price: {
+            type: DataTypes.STRING(250),
+            field: 'price'
+        },
+        advance : {
+            type: DataTypes.STRING(250),
+            field: 'advance'
+        },
+        createdLeadId:{
+            type:DataTypes.INTEGER(11),
+            field:'created_lead_id',
+        },
+        remaining : {
+            type: DataTypes.STRING(250),
+            field: 'remaining'
         },
         mobileNo: {
             type: DataTypes.STRING(11),

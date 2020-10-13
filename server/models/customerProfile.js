@@ -13,6 +13,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'purchase_order'
         },
+        productName: {
+            type: DataTypes.STRING(250),
+            field: 'product_name'
+        },
         quantity : {
             type: DataTypes.STRING(250),
             field: 'quantity'

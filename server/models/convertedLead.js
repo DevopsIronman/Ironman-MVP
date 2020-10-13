@@ -22,9 +22,13 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'service_frequency'
         },
+        callBack: {
+            type: DataTypes.STRING(250),
+            field: 'call_back'
+        },
         
         followUpTask: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING(250),
             field: 'follow_up_task'
         },
         result: {
@@ -71,6 +75,7 @@ module.exports = function (sequelize, DataTypes) {
         ConvertedLead.associate = function(models) {
             ConvertedLead.belongsTo(models.CreateLead, { foreignKey: 'createdLeadId'})
             ConvertedLead.hasMany(models.CustomerProfile, { foreignKey: 'convertedLeadId' })
+            ConvertedLead.hasMany(models.Ticket, { foreignKey: 'convertedLeadId' })
 
     }
 

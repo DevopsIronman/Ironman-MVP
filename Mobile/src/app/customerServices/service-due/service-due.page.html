@@ -42,7 +42,8 @@
         </ion-item>
            <ion-item *ngIf= order?.open>
              <ion-label>
-               <p>Address :  {{order.address}} </p>
+               <p>Company Name :  {{order.companyName}} </p>
+               <p>Address :  {{order.city}} </p>
                <p>Quantity :  {{order.quantity}} </p>
                <p>service Due :  {{order.serviceDue | date}} </p>
                <p>purchased on :  {{order.createdAt  | date}} </p>

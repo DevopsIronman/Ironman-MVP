@@ -3,12 +3,14 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-badge color="success" slot="end"> {{count}} Lead(s)</ion-badge>
+
     <ion-title>Leads</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card *ngFor="let lead of leads">
+<ion-card *ngFor="let lead of leads" [routerLink]="['/new-lead']" [queryParams]="{ lead: lead.id }">
   <ion-card-header>
     <ion-card-title>
       <ion-avatar >

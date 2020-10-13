@@ -11,13 +11,83 @@
   <div class= "header">
     <ion-label class="customer-name"> 
       
+      <h2>{{customer?.companyName }}</h2>
       <h2>{{customer?.customerName }}</h2>
       <p>{{customer?.mobileNo }} </p>
       <p>{{customer?.mailId }}</p>
-      <p>{{customer?.customerLocation }}</p>
+      <p>{{customer?.city }}</p>
     </ion-label>
   </div>
   <div>
+    <ion-item>
+      <ion-label>Customer Address : </ion-label>
+      <ion-label>{{customer?.address }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>City : </ion-label>
+      <ion-label>{{customer?.city }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>State : </ion-label>
+      <ion-label>{{customer?.state }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pincode : </ion-label>
+      <ion-label>{{customer?.pincode }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>GSTIN No. : </ion-label>
+      <ion-label>{{customer?.gstIn }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Alt Mobile No. : </ion-label>
+      <ion-label>{{customer?.mobileNo2 }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Alt Mail Id : </ion-label>
+      <ion-label>{{customer?.mobileNo2 }}</ion-label>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Breaking Size variety : </ion-label>
+      <ion-label>{{customer?.breakingSizeVariety }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Excavator Model : </ion-label>
+      <ion-label>{{customer?.excavatorModel }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Backhoe Loader : </ion-label>
+      <ion-label>{{customer?.backhoeLoader }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Machine Capacity : </ion-label>
+      <ion-label>{{customer?.machineCapacity }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Machine Make & Model : </ion-label>
+      <ion-label>{{customer?.machineMakeModel }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Existing Breaker : </ion-label>
+      <ion-label>{{customer?.existingBreaker }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pipelines : </ion-label>
+      <ion-label>{{customer?.pipelines }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lead Assigned : </ion-label>
+      <ion-label>{{customer?.leadAssigned }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lead Assigned To: </ion-label>
+      <ion-label>{{customer?.leadAssignedTo }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Recommended Breaker : </ion-label>
+      <ion-label>{{customer?.recommendedBreaker }}</ion-label>
+    </ion-item>
     <ion-item>
       <ion-label>product purchased : </ion-label>
       <ion-label>{{customerProfile?.purchaseOrder}} </ion-label>
@@ -44,7 +114,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Service Frequency: </ion-label>
-      <ion-label>{{customerProfile?.serviceFrequency }}  days</ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.serviceFrequency }}  days</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Service Report : </ion-label>
@@ -54,13 +124,18 @@
       <ion-label>Technician Lead / Commisioning : </ion-label>
       <ion-label>{{customerProfile?.techLead }}  </ion-label>
     </ion-item>
-    <ion-item>
-      <ion-label>Recommended Breaker : </ion-label>
-      <ion-label>{{customer?.ConvertedLeads[0]?.recommendedBreaker }}</ion-label>
-    </ion-item>
+   
     <ion-item>
       <ion-label>Price : </ion-label>
       <ion-label>{{customer?.ConvertedLeads[0]?.price }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Advance Paid : </ion-label>
+      <ion-label>{{customerProfile?.advance }}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Balance amound : </ion-label>
+      <ion-label>{{customerProfile?.remaining }}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>warranty: </ion-label>
@@ -75,41 +150,14 @@
       <ion-label>{{customer?.ConvertedLeads[0]?.quoteOrInvoice }}</ion-label>
     </ion-item>
     <ion-item>
+      <ion-label>Feedback : </ion-label>
+      <ion-label>{{customerProfile?.customerFeedback }}</ion-label>
+    </ion-item>
+    <ion-item>
       <ion-label>result : </ion-label>
       <ion-label>{{customer?.ConvertedLeads[0]?.result }}</ion-label>
     </ion-item>
-    <ion-item>
-      <ion-label>Breaking Size variety : </ion-label>
-      <ion-label>{{customer?.breakingSizeVariety }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Excavator Model : </ion-label>
-      <ion-label>{{customer?.excavatorModel }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Back Loader : </ion-label>
-      <ion-label>{{customer?.backLoader }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Machine Capacity : </ion-label>
-      <ion-label>{{customer?.machineCapacity }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Machine Make & Model : </ion-label>
-      <ion-label>{{customer?.machineMakeModel }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Existing Breaker : </ion-label>
-      <ion-label>{{customer?.existingBreaker }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pipelines : </ion-label>
-      <ion-label>{{customer?.pipelines }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Lead Assigned : </ion-label>
-      <ion-label>{{customer?.leadAssignedTo }}</ion-label>
-    </ion-item>
+    
   </div>
 
 </ion-content>
