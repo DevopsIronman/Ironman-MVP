@@ -120,7 +120,9 @@ router.post('/convertLead', (req, res) => {
                 data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
                 Ticket.create(data).then(function (res) {
                     sendSuccess(res, result);
-                })           }
+                })           } else {
+                    sendSuccess(res, result);
+                }
             }).catch(function (err) {
                sendError(res, err);
             });
