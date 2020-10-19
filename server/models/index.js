@@ -14,7 +14,10 @@ models.Product3 = require("./product3.js")(sequelize, Sequelize);
 models.Product4 = require("./product4.js")(sequelize, Sequelize);
 models.Product5 = require("./product5.js")(sequelize, Sequelize);
 models.Ticket = require("./ticket.js")(sequelize, Sequelize);
+models.User = require("./user.js")(sequelize, Sequelize);
 // models.SampleData.sync();
+models.User.sync({});
+
 models.CreateLead.sync();
 models.ConvertedLead.sync();
 models.CustomerProfile.sync();

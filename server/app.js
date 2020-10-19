@@ -1,8 +1,10 @@
 var express = require('express');
 const bodyParser = require("body-parser");
 var path = require('path')
+var config = require('./config')
 const cors = require("cors"); 
 var app = express();
+var passport		=	require('passport');
 
 app.use(cors());
 
@@ -16,7 +18,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.get("/", (req, res) => {
 //   res.json({ message: "Welcome to bezkoder application........." });
 // });
+const localSignupStrategy = require('./middleware/passport/local-signup')
+const localLoginStrategy = require('./middleware/passport/local-login')
 
+passport.use('local-login', localLoginStrategy)
+passport.use('local-signup', localSignupStrategy)
 app.use('/api', require('./routes/index'))
 
 // set port, listen for requests

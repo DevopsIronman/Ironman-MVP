@@ -72,7 +72,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         leadAssigned:{
             type:DataTypes.STRING(250),
-            field:'lead_assigned_to',
+            field:'lead_assigned',
         },
         convertedStatus:{
             type:DataTypes.STRING(250),
