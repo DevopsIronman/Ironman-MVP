@@ -22,7 +22,7 @@ export class CustomerdetailsPage implements OnInit {
       console.log(res)
       if (res.success) {
         this.customer = res.data;
-        debugger
+
         this.customerProfile = this.customer.CustomerProfiles[0];
       }
     });

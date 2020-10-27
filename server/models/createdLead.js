@@ -37,21 +37,21 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'gst_in'
         },
-        breakingSizeVariety: {
+        // breakingSizeVariety: {
+        //     type: DataTypes.STRING(250),
+        //     field: 'breaking_size_variety'
+        // },
+        type: {
             type: DataTypes.STRING(250),
-            field: 'breaking_size_variety'
+            field: 'type'
         },
-        excavatorModel: {
+        purpose: {
             type: DataTypes.STRING(250),
-            field: 'excavator_model'
+            field: 'purpose'
         },
-        backhoeLoader: {
+        product: {
             type: DataTypes.STRING(250),
-            field: 'backhoe_loader'
-        },
-        machineCapacity: {
-            type: DataTypes.STRING(250),
-            field: 'machine_capacity'
+            field: 'product'
         },
         machineMakeModel: {
             type: DataTypes.STRING(250),
@@ -92,7 +92,7 @@ module.exports = function (sequelize, DataTypes) {
             type:DataTypes.STRING(250),
             field:'mail_id',
         },
-        mailId:{
+        mailId2:{
             type:DataTypes.STRING(250),
             field:'mail_id2',
         },

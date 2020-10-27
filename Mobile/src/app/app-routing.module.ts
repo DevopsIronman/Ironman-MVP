@@ -76,6 +76,18 @@ const routes: Routes = [
     path: 'customerdetails',
     loadChildren: () => import('./customers/customerdetails/customerdetails.module').then( m => m.CustomerdetailsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'call-back-details',
+    loadChildren: () => import('./call-back-details/call-back-details.module').then( m => m.CallBackDetailsPageModule)
+  },
   
   
 ];

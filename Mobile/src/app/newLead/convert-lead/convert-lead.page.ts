@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./convert-lead.page.scss'],
 })
 export class ConvertLeadPage implements OnInit {
+  dateCheck:boolean = false;
   leadForm: any;
   leads: any;
   convertedLeadId: any;
@@ -27,7 +28,11 @@ export class ConvertLeadPage implements OnInit {
       result: new FormControl(),
       quoteOrInvoice: new FormControl(),
       callBack: new FormControl(),
+      callBackDate: new FormControl(),
+      callBackTime: new FormControl(),
+      
     });
+
     // let leadId = localStorage.getItem('editLeadId');
     this.leadId = this.activeRoute.snapshot.queryParams.lead;
     if(this.leadId) {
@@ -40,6 +45,9 @@ export class ConvertLeadPage implements OnInit {
             this.leadForm.controls["price"].setValue(this.leads.price);
             this.leadForm.controls["warranty"].setValue(this.leads.warranty);
             this.leadForm.controls["serviceFrequency"].setValue(this.leads.serviceFrequency);
+            this.leadForm.controls["callBack"].setValue(this.leads.callBack);
+            this.leadForm.controls["callBackDate"].setValue(this.leads.callBackDate);
+            this.leadForm.controls["callBackTime"].setValue(this.leads.callBackTime);
             this.leadForm.controls["followUpTask"].setValue(this.leads.followUpTask);
             this.leadForm.controls["result"].setValue(this.leads.result);
             this.leadForm.controls["quoteOrInvoice"].setValue(this.leads.quoteOrInvoice);
@@ -48,6 +56,15 @@ export class ConvertLeadPage implements OnInit {
       });
     }
 
+  }
+
+  datepicker(event){
+    if(event.target.value == 'yes') {
+      this.dateCheck = true;
+    } else {
+      this.dateCheck = false;
+    }
+    
   }
 
   submit(data) {

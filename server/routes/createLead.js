@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-
+const { Op } = require("sequelize");
 const { CreateLead , ConvertedLead, Ticket, CustomerOrders, CustomerProfile} = require('../models');
 // const {convertedLead} = require('../models');
 
@@ -31,6 +31,7 @@ router.get('/', (req, res) => {
         });
     })
 })
+
 router.get('/lead/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         CreateLead.findAll({ where: { deleteStatus: false, id: req.params.id },  }).then(function (result) {
@@ -40,6 +41,7 @@ router.get('/lead/:id', (req, res) => {
         });
     })
 })
+
 router.get('/ConvertedLead/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         ConvertedLead.findAll({ where: { deleteStatus: false, createdLeadId: req.params.id },  }).then(function (result) {
@@ -49,9 +51,50 @@ router.get('/ConvertedLead/:id', (req, res) => {
         });
     })
 })
+
+router.get('/ConvertedLeadCB/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        ConvertedLead.findAll({ where: { deleteStatus: false, id: req.params.id },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
 router.get('/customer', (req, res) => {
     return new Promise((resolve, reject) => {
         CustomerOrders.findAll({ where: { deleteStatus: false },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+router.get('/callBack', (req, res) => {
+    return new Promise((resolve, reject) => {
+        Ticket.findAll({ where: { deleteStatus: false, status:null },  order: [['callBackDate', 'DESC']],  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+router.get('/callBackCompleted', (req, res) => {
+    return new Promise((resolve, reject) => {
+        Ticket.findAll({ where: { deleteStatus: false, status: true},  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
+router.get('/callBackrejected', (req, res) => {
+    return new Promise((resolve, reject) => {
+        Ticket.findAll({ where: { deleteStatus: false, status: false },  }).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -96,6 +139,18 @@ router.put('/updateNewLead/:id', (req, res) => {
     });
 });
 
+
+router.put('/updateTicket/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        // req.body.convertedStatus = "new";
+        Ticket.update(req.body , { where: { id: req.params.id } }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    });
+});
+
 router.put('/updateConvertedLead/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         // req.body.convertedStatus = "new";
@@ -116,6 +171,8 @@ router.post('/convertLead', (req, res) => {
                 data ={
                     convertedLeadId: result.id,
                     createdLeadId: req.body.createdLeadId,
+                    callBackDate: req.body.callBackDate,
+                    callBackTime: req.body.callBackTime,
                 }
                 data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
                 Ticket.create(data).then(function (res) {
