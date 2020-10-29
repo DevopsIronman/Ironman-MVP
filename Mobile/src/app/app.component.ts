@@ -3,19 +3,25 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { NotificationPage} from './notification/notification.page';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  login:boolean = false;
   public selectedIndex = 0;
   public appPages = [
     {
       title: 'Home',
       url: '/product',
       icon: 'home'
+    },
+    {
+      title: 'Call Back',
+      url: '/notification',
+      icon: 'calendar'
     },
     {
       title: 'Products',
@@ -95,12 +101,19 @@ export class AppComponent implements OnInit {
     }
   ];
   public labels = [];
+  subscribe:any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    private navController: NavController,
+    public notificationPage: NotificationPage
   ) {
     this.initializeApp();
+    this.subscribe= this.platform.backButton.subscribeWithPriority(6666,()=> {
+      this.navController.back();
+    })
+
   }
 
   initializeApp() {

@@ -26,11 +26,12 @@ export class NewLeadPage implements OnInit {
         mobileNo: new FormControl(),
         mobileNo2: new FormControl(),
         mailId: new FormControl(),
-        // mailId2: new FormControl(),
-        breakingSizeVariety: new FormControl(),
-        excavatorModel: new FormControl(),
-        backhoeLoader: new FormControl(),
-        machineCapacity: new FormControl(),
+        mailId2: new FormControl(),
+        // breakingSizeVariety: new FormControl(),
+        type: new FormControl(),
+        // backhoeLoader: new FormControl(),
+        purpose: new FormControl(),
+        product: new FormControl(),
         machineMakeModel: new FormControl(),
         existingBreaker: new FormControl(),
         pipelines: new FormControl(),
@@ -75,6 +76,7 @@ export class NewLeadPage implements OnInit {
     }
   
     submit(data) {
+      
       console.log(data, this.leadForm);
       if(this.leads?.id) {
         this.leadService.updateLead(this.leads.id, this.leadForm.value).subscribe((res: any) => {

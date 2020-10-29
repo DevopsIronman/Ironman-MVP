@@ -29,13 +29,24 @@ export class LeadService {
     return this.http.get<any>(this.API_URL+'/api/createLead/ConvertedLead/'+id).pipe(
       map(this.extractData1));
   }
+  getSingleConvertedLeadCB(id): Observable<any> {
+    return this.http.get<any>(this.API_URL+'/api/createLead/ConvertedLeadCB/'+id).pipe(
+      map(this.extractData1));
+  }
   getCustomer(): Observable<any> {
     return this.http.get<any>(this.API_URL+'/api/createLead/customer').pipe(
       map(this.extractData1));
   }
-  
-  getCustomerDetails(id): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/customerDetails/'+ id).pipe(
+  getCalBack(): Observable<any> {
+    return this.http.get<any>(this.API_URL+'/api/createLead/callBack').pipe(
+      map(this.extractData1));
+  }
+  getCalBackcompleted(): Observable<any> {
+    return this.http.get<any>(this.API_URL+'/api/createLead/callBackCompleted').pipe(
+      map(this.extractData1));
+  }
+  getCalBackrejected(): Observable<any> {
+    return this.http.get<any>(this.API_URL+'/api/createLead/callBackrejected').pipe(
       map(this.extractData1));
   }
 
@@ -56,6 +67,11 @@ export class LeadService {
   updateConvertedLead(id, data): Observable<any> {
     console.log(true)
     return this.http.put<any>(this.API_URL+'/api/createLead/updateConvertedLead/'+id, data).pipe(
+      map(this.extractData1));
+  }
+  updateTicket(id, data): Observable<any> {
+    console.log(true)
+    return this.http.put<any>(this.API_URL+'/api/createLead/updateTicket/'+id, data).pipe(
       map(this.extractData1));
   }
 

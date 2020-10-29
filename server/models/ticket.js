@@ -15,6 +15,25 @@ module.exports = function (sequelize, DataTypes) {
             field: 'incident_number'
         },
         
+      callBackDate: {
+            type: DataTypes.STRING(250),
+            field: 'call_back_date'
+        },
+        callBackTime: {
+            type: DataTypes.STRING(250),
+            field: 'call_back_time'
+        },
+        comments: {
+            type: DataTypes.STRING(250),
+            field: 'comments'
+        },
+        status:
+        {
+            type: DataTypes.BOOLEAN,
+            field: 'status',
+           
+        },
+        
         createdLeadId:{
             type:DataTypes.INTEGER(11).UNSIGNED,
             field:'created_lead_id',

@@ -60,14 +60,24 @@
 
     <ion-item >
       <ion-label position="floating">Call Back</ion-label>
-      <ion-select formControlName="callBack">
+      <ion-select formControlName="callBack" (ionChange)='datepicker($event)'>
         <ion-select-option value="yes">YES</ion-select-option>
         <ion-select-option value="no">NO</ion-select-option>
       </ion-select>
     </ion-item>
 
+    <ion-item *ngIf=dateCheck >
+      <ion-label  position="floating">Date</ion-label>
+      <ion-datetime [(ngModel)]="callBackDate" formControlName='callBackDate' displayFormat="DD-MMM-YYYY"></ion-datetime>
+    </ion-item>
 
-    <ion-item >
+    <ion-item  *ngIf=dateCheck>
+      <ion-label  position="floating">Time</ion-label>
+      <ion-datetime [(ngModel)]="callBackTime" formControlName='callBackTime'  displayFormat="h:mm A" ></ion-datetime>
+    </ion-item>
+
+
+    <ion-item  >
       <ion-label position="floating">Quote / Invoice</ion-label>
       <!-- <ion-input formControlName="quoteOrInvoice"> -->
         <ion-select formControlName="quoteOrInvoice">

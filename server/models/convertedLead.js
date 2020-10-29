@@ -26,7 +26,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'call_back'
         },
-        
+        callBackDate: {
+            type: DataTypes.STRING(250),
+            field: 'call_back_date'
+        },
+        callBackTime: {
+            type: DataTypes.STRING(250),
+            field: 'call_back_time'
+        },
         followUpTask: {
             type: DataTypes.STRING(250),
             field: 'follow_up_task'
