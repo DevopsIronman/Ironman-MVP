@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import {LeadService} from '../service/lead.service'
-import { CompileTemplateMetadata } from '@angular/compiler';
-
+import { NavController, Platform } from '@ionic/angular';
 @Component({
   selector: 'app-call-back-details',
   templateUrl: './call-back-details.page.html',
@@ -19,7 +18,7 @@ export class CallBackDetailsPage implements OnInit {
   callBackfrom: any;
   rescheduleForm: any;
   reschedule:boolean = false;
-  constructor(private router: Router, public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
+  constructor(private router: Router, public navController:NavController ,public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
 
   ngOnInit() {
     this.callBackfrom = this._formBuilder.group({
@@ -59,7 +58,9 @@ export class CallBackDetailsPage implements OnInit {
         this.leadService.updateTicket(this.callBackId, data ).subscribe((res: any) => {
           console.log(res);
           if(res) {
-            this.router.navigate(['/notification']);
+            this.router.navigate(['/notification/completed']); 
+              // this.router.navigate(['/notification/']);
+            // this.navController.navigateForward(['/notification']);
 
           }
         });
@@ -76,8 +77,9 @@ export class CallBackDetailsPage implements OnInit {
     this.leadService.updateTicket(this.callBackId, data ).subscribe((res: any) => {
       console.log(res);
       if(res) {
-        this.router.navigateByUrl('/notification');
+        this.router.navigate(['/notification/rejected'], { queryParams: {completed: 'completed' } }); 
 
+        // this.navController.navigateBack(['/notification/upcoming']);
       }
     });
   }

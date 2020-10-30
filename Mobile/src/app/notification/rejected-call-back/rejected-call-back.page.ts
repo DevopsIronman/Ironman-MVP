@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeadService } from '../../service/lead.service'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-rejected-call-back',
@@ -7,13 +8,27 @@ import { LeadService } from '../../service/lead.service'
   styleUrls: ['./rejected-call-back.page.scss'],
 })
 export class RejectedCallBackPage implements OnInit {
-
+  tabStatus;
   callBack: any=[];
-  constructor(private leadService:LeadService) { }
+  constructor(private leadService:LeadService, private router: Router, public activeRoute: ActivatedRoute,) { }
 
   ngOnInit() {
     this.callBackCalc();
 
+  }
+
+  ionViewWillEnter (){
+    
+    this.tabStatus = this.activeRoute.snapshot.queryParams.completed;
+    if(this.tabStatus) {
+      this.router.navigate(['/notification'])
+    }
+    console.log('ionViewWillEnter')
+  }
+  ionViewWillLeave() {
+    this.tabStatus = false;
+    this.activeRoute.snapshot.queryParams.completed= false;
+    // console.log('ionViewWillLeave')
   }
 
   callBackCalc() {
