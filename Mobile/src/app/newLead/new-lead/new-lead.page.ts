@@ -41,6 +41,7 @@ export class NewLeadPage implements OnInit {
         recommendedBreaker: new FormControl(),
   
       });
+      debugger
       this.leadId = this.activeRoute.snapshot.queryParams.lead;
       
       if(this.leadId) {
@@ -58,10 +59,11 @@ export class NewLeadPage implements OnInit {
             this.leadForm.controls["mobileNo"].setValue(this.leads.mobileNo);
             this.leadForm.controls["mobileNo2"].setValue(this.leads.mobileNo2);
             this.leadForm.controls["mailId"].setValue(this.leads.mailId);
-            this.leadForm.controls["breakingSizeVariety"].setValue(this.leads.breakingSizeVariety);
-            this.leadForm.controls["excavatorModel"].setValue(this.leads.excavatorModel);
-            this.leadForm.controls["backhoeLoader"].setValue(this.leads.backhoeLoader);
-            this.leadForm.controls["machineCapacity"].setValue(this.leads.machineCapacity);
+            this.leadForm.controls["mailId2"].setValue(this.leads.mailId2);
+            // this.leadForm.controls["breakingSizeVariety"].setValue(this.leads.breakingSizeVariety);
+            this.leadForm.controls["type"].setValue(this.leads.type);
+            this.leadForm.controls["product"].setValue(this.leads.product);
+            this.leadForm.controls["purpose"].setValue(this.leads.purpose);
             this.leadForm.controls["machineMakeModel"].setValue(this.leads.machineMakeModel);
             this.leadForm.controls["existingBreaker"].setValue(this.leads.existingBreaker);
             this.leadForm.controls["pipelines"].setValue(this.leads.pipelines);
@@ -69,14 +71,12 @@ export class NewLeadPage implements OnInit {
             this.leadForm.controls["leadAssignedTo"].setValue(this.leads.leadAssignedTo);
             this.leadForm.controls["convertedStatus"].setValue(this.leads.convertedStatus);
             this.leadForm.controls["recommendedBreaker"].setValue(this.leads.recommendedBreaker);
-            
           }
         });
       }
     }
   
     submit(data) {
-      
       console.log(data, this.leadForm);
       if(this.leads?.id) {
         this.leadService.updateLead(this.leads.id, this.leadForm.value).subscribe((res: any) => {

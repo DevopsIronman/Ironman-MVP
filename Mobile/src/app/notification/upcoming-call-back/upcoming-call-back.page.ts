@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './upcoming-call-back.page.html',
   styleUrls: ['./upcoming-call-back.page.scss'],
 })
-export class UpcomingCallBackPage implements OnInit {
+export class UpcomingCallBackPage  {
   callBack: any=[];
 
   constructor(private leadService:LeadService, private changeRef: ChangeDetectorRef,
@@ -16,35 +16,24 @@ private router: Router    ) {
     this.callBackCalc();
     
    }
+   
 
-  ngOnInit() {
+  // ngOnInit() {
     
-    this.callBackCalc();
-    this.changeRef.detectChanges();
-  }
+  //   this.callBackCalc();
+  //   this.changeRef.detectChanges();
+  // }
   ionViewWillEnter (){
     this.callBackCalc();
     console.log('ionViewWillEnter')
   }
 
- 
+  async nav(call) {
+    debugger
+    this.router.navigate(['/notification/completed']); 
+    await this.router.navigate(['/call-back-details'], { queryParams: {callbackId: call.id, createdLeadId: call.createdLeadId, convertedLeadId: call.convertedLeadId  } });
+  }
   
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad')
-  }
-  ionViewWillLeave() {
-    console.log('ionViewWillLeave')
-  }
-  nav(call) {
-   
-    this.router.navigate(['/call-back-details'], { queryParams: {callbackId: call.id, createdLeadId: call.createdLeadId, convertedLeadId: call.convertedLeadId  } });
-  }
-  ionViewWillUnload() {
-    console.log('ionViewWillUnload')
-  }
-  ionViewDidEnter() {
-    console.log('ionViewDidEnter');
-  }
   callBackCalc() {
     
     let resp;
@@ -101,3 +90,4 @@ private router: Router    ) {
 
 
 }
+

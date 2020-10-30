@@ -155,7 +155,19 @@ router.put('/updateConvertedLead/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         // req.body.convertedStatus = "new";
         ConvertedLead.update(req.body , { where: { id: req.params.id } }).then(function (result) {
-            sendSuccess(res, result);
+            if(req.body.callBack =='yes') {
+                data ={
+                    convertedLeadId: req.params.id,
+                    createdLeadId: req.body.createdLeadId,
+                    callBackDate: req.body.callBackDate,
+                    callBackTime: req.body.callBackTime,
+                }
+                data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
+                Ticket.create(data).then(function (res) {
+                    sendSuccess(res, result);
+                })           } else {
+                    sendSuccess(res, result);
+                }
         }).catch(function (err) {
             sendError(res, err);
         });

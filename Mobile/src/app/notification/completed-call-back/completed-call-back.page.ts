@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeadService } from '../../service/lead.service'
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-completed-call-back',
@@ -8,12 +9,15 @@ import { LeadService } from '../../service/lead.service'
 })
 export class CompletedCallBackPage implements OnInit {
   callBack: any=[];
-  constructor(private leadService:LeadService) { }
+  tabStatus;
+  constructor(private leadService:LeadService, private router: Router, public activeRoute: ActivatedRoute,) { }
 
   ngOnInit() {
+    
     this.callBackCalc();
-
+ 
   }
+  
 
   callBackCalc() {
     let resp;
