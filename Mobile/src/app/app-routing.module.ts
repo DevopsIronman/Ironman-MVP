@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'product',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   
@@ -76,10 +76,10 @@ const routes: Routes = [
     path: 'customerdetails',
     loadChildren: () => import('./customers/customerdetails/customerdetails.module').then( m => m.CustomerdetailsPageModule)
   },
-  {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  // },
   {
     path: 'notification',
     loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
@@ -87,6 +87,10 @@ const routes: Routes = [
   {
     path: 'call-back-details',
     loadChildren: () => import('./call-back-details/call-back-details.module').then( m => m.CallBackDetailsPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
   
   
