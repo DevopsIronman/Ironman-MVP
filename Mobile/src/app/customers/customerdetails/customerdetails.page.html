@@ -45,7 +45,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Alt Mail Id : </ion-label>
-      <ion-label>{{customer?.mobileNo2 }}</ion-label>
+      <ion-label>{{customer?.mailId2 }}</ion-label>
     </ion-item>
     
     <!-- <ion-item>
@@ -53,24 +53,24 @@
       <ion-label>{{customer?.breakingSizeVariety }}</ion-label>
     </ion-item> -->
     <ion-item>
-      <ion-label>Type : </ion-label>
+      <ion-label>Machine Type : </ion-label>
       <ion-label>{{customer?.type }}</ion-label>
     </ion-item>
     
     <ion-item>
       <ion-label>Purpose: </ion-label>
-      <ion-label>{{customer?.product }}</ion-label>
+      <ion-label>{{customer?.purpose }}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>product: </ion-label>
-      <ion-label>{{customer?.purpose }}</ion-label>
+      <ion-label>Product: </ion-label>
+      <ion-label>{{customer?.product }}</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Machine Make & Model : </ion-label>
       <ion-label>{{customer?.machineMakeModel }}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Existing Breaker : </ion-label>
+      <ion-label>Breaker : </ion-label>
       <ion-label>{{customer?.existingBreaker }}</ion-label>
     </ion-item>
     <ion-item>
@@ -78,7 +78,7 @@
       <ion-label>{{customer?.pipelines }}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Lead Assigned : </ion-label>
+      <ion-label>Lead created By : </ion-label>
       <ion-label>{{customer?.leadAssigned }}</ion-label>
     </ion-item>
     <ion-item>
@@ -90,7 +90,7 @@
       <ion-label>{{customer?.recommendedBreaker }}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>product purchased : </ion-label>
+      <ion-label>Product Purchased : </ion-label>
       <ion-label>{{customerProfile?.purchaseOrder}} </ion-label>
     </ion-item>
     <ion-item>
@@ -139,7 +139,7 @@
       <ion-label>{{customerProfile?.remaining }}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>warranty: </ion-label>
+      <ion-label>Warranty: </ion-label>
       <ion-label>{{customer?.ConvertedLeads[0]?.warranty }}</ion-label>
     </ion-item>
     <ion-item>
@@ -153,10 +153,6 @@
     <ion-item>
       <ion-label>Feedback : </ion-label>
       <ion-label>{{customerProfile?.customerFeedback }}</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>result : </ion-label>
-      <ion-label>{{customer?.ConvertedLeads[0]?.result }}</ion-label>
     </ion-item>
     
   </div>

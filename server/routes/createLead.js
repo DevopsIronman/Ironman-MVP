@@ -74,7 +74,7 @@ router.get('/customer', (req, res) => {
 
 router.get('/callBack', (req, res) => {
     return new Promise((resolve, reject) => {
-        Ticket.findAll({ where: { deleteStatus: false, status:null },  order: [['callBackDate', 'DESC']],  }).then(function (result) {
+        Ticket.findAll({ where: { deleteStatus: false, status:null },  order: [['callBackDate', 'ASC']],  }).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);
@@ -156,16 +156,27 @@ router.put('/updateConvertedLead/:id', (req, res) => {
         // req.body.convertedStatus = "new";
         ConvertedLead.update(req.body , { where: { id: req.params.id } }).then(function (result) {
             if(req.body.callBack =='yes') {
-                data ={
-                    convertedLeadId: req.params.id,
-                    createdLeadId: req.body.createdLeadId,
-                    callBackDate: req.body.callBackDate,
-                    callBackTime: req.body.callBackTime,
-                }
-                data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
-                Ticket.create(data).then(function (res) {
-                    sendSuccess(res, result);
-                })           } else {
+                Ticket.findOne({ where: { deleteStatus: false,  convertedLeadId: req.params.id }   }).then(function (ticketresult) {
+                    if(ticketresult) { 
+                        Ticket.update({ callBackDate: req.body.callBackDate,}, { where: { id: ticketresult.id } }).then(function (leadResult) { 
+                            sendSuccess(res, result);
+                        });
+                    } else {
+                        data ={
+                            convertedLeadId: req.params.id,
+                            createdLeadId: req.body.createdLeadId,
+                            callBackDate: req.body.callBackDate,
+                           
+                        }
+                        data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
+                        Ticket.create(data).then(function (resp) {
+                            sendSuccess(res, result);
+                        }); 
+                    }
+                }).catch(function (err) {
+                    sendError(res, err);
+                });
+                        } else {
                     sendSuccess(res, result);
                 }
         }).catch(function (err) {
@@ -187,7 +198,7 @@ router.post('/convertLead', (req, res) => {
                     callBackTime: req.body.callBackTime,
                 }
                 data.incidentNumber = 'INC000'+new Date().getFullYear()+(new Date().getMonth()+ 1)+new Date().getDate()+'-'+req.body.createdLeadId;
-                Ticket.create(data).then(function (res) {
+                Ticket.create(data).then(function (resP) {
                     sendSuccess(res, result);
                 })           } else {
                     sendSuccess(res, result);

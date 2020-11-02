@@ -18,11 +18,7 @@ export class AppComponent implements OnInit {
       url: '/dashboard',
       icon: 'home'
     },
-    {
-      title: 'Call Back',
-      url: '/notification',
-      icon: 'calendar'
-    },
+   
     {
       title: 'Products',
       icon: 'cube',
@@ -85,6 +81,11 @@ export class AppComponent implements OnInit {
     ]
     },
     {
+      title: 'Call Back',
+      url: '/notification',
+      icon: 'calendar'
+    },
+    {
       title: 'About Us',
       url: '/about-us',
       icon: 'information-circle'
@@ -124,6 +125,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    let i:number =0
+    setInterval(function() {
+      console.log("success" ,i+1);
+    }, 10 * 60 * 100);
     // const path = window.location.pathname.split('menu/')[1];
     // if (path !== undefined) {
     //   this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());

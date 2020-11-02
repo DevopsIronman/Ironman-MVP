@@ -18,6 +18,9 @@ export class CallBackDetailsPage implements OnInit {
   callBackfrom: any;
   rescheduleForm: any;
   reschedule:boolean = false;
+  minDate: string = new Date().toISOString();
+
+
   constructor(private router: Router, public navController:NavController ,public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
 
   ngOnInit() {
@@ -26,7 +29,7 @@ export class CallBackDetailsPage implements OnInit {
     });
     this.rescheduleForm = this._formBuilder.group({
       callBackDate: new FormControl('',[Validators.required]),
-      callBackTime: new FormControl('',[Validators.required]),
+      // callBackTime: new FormControl('',[Validators.required]),
     });
     this.callBackId = this.activeRoute.snapshot.queryParams.callbackId;
     this.createdLeadId = this.activeRoute.snapshot.queryParams.createdLeadId;
@@ -58,7 +61,7 @@ export class CallBackDetailsPage implements OnInit {
         this.leadService.updateTicket(this.callBackId, data ).subscribe((res: any) => {
           console.log(res);
           if(res) {
-            this.router.navigate(['/notification/completed']); 
+            this.router.navigate(['/notification/completed'], { queryParams: {completed: 'completed' } }); 
               // this.router.navigate(['/notification/']);
             // this.navController.navigateForward(['/notification']);
 

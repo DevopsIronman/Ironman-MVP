@@ -14,6 +14,8 @@ export class ConvertLeadPage implements OnInit {
   leads: any;
   convertedLeadId: any;
   leadId: any;
+  minDate: string = new Date().toISOString();
+  callBackdate;
   constructor( private router: Router, public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService ) { }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class ConvertLeadPage implements OnInit {
       // recommendedBreaker: new FormControl(),
       price: new FormControl(),
       warranty: new FormControl(),
-      serviceFrequency: new FormControl(),
+      serviceFrequency: new FormControl("", Validators.required),
       // lead: new FormControl(),
       // machineCapacity: new FormControl(),
       followUpTask: new FormControl(),
@@ -29,7 +31,8 @@ export class ConvertLeadPage implements OnInit {
       quoteOrInvoice: new FormControl(),
       callBack: new FormControl(),
       callBackDate: new FormControl(),
-      callBackTime: new FormControl(),
+      
+
       
     });
 
@@ -40,6 +43,7 @@ export class ConvertLeadPage implements OnInit {
         console.log(res)
         if (res.success) {
           if(res.data.length >0) {
+           
             this.leads = res.data[0];
             this.convertedLeadId = this.leads.id;
             this.leadForm.controls["price"].setValue(this.leads.price);
@@ -47,10 +51,11 @@ export class ConvertLeadPage implements OnInit {
             this.leadForm.controls["serviceFrequency"].setValue(this.leads.serviceFrequency);
             this.leadForm.controls["callBack"].setValue(this.leads.callBack);
             this.leadForm.controls["callBackDate"].setValue(this.leads.callBackDate);
-            this.leadForm.controls["callBackTime"].setValue(this.leads.callBackTime);
+            // this.leadForm.controls["callBackTime"].setValue(this.leads.callBackTime);
             this.leadForm.controls["followUpTask"].setValue(this.leads.followUpTask);
             this.leadForm.controls["result"].setValue(this.leads.result);
             this.leadForm.controls["quoteOrInvoice"].setValue(this.leads.quoteOrInvoice);
+            this.callBackdate = new Date(this.leads.callBackDate).toISOString();
           }
         }
       });
@@ -75,6 +80,7 @@ export class ConvertLeadPage implements OnInit {
     if(this.convertedLeadId) {
       this.leadService.updateConvertedLead(this.convertedLeadId,convertedData).subscribe((res: any) => {
         console.log(res)
+        
         if (res.success) {
           localStorage.setItem("convertedLeadId", this.convertedLeadId);
           console.log(res)

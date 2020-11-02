@@ -16,7 +16,6 @@ private router: Router    ) {
     this.callBackCalc();
     
    }
-   
 
   // ngOnInit() {
     
@@ -28,12 +27,12 @@ private router: Router    ) {
     console.log('ionViewWillEnter')
   }
 
+ 
   async nav(call) {
-    debugger
+    
     this.router.navigate(['/notification/completed']); 
     await this.router.navigate(['/call-back-details'], { queryParams: {callbackId: call.id, createdLeadId: call.createdLeadId, convertedLeadId: call.convertedLeadId  } });
   }
-  
   callBackCalc() {
     
     let resp;
@@ -47,10 +46,10 @@ private router: Router    ) {
         //  if(element.callBackTime && new Date(element.callBackTime).getHours() == new Date().get)
         var date1, date2;  
 
-        date1 = new Date(element.callBackTime);
+        date1 = new Date(element.callBackDate);
         // document.write(""+date1);
         console.log(date1)
-        console.log(element.callBackTime)
+        console.log(element.callBackDate)
         date2 = new Date();
         // document.write("<br>"+date2);
 
