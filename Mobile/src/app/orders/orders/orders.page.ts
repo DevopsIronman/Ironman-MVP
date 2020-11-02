@@ -36,23 +36,31 @@ export class OrdersPage implements OnInit {
     let frequency ;
     let date = new Date();
         // date.setDate(date.getDate() + frequency);
-        let firstDay = new Date(date.getFullYear(), date.getMonth(), 1).toISOString();
+        let firstDay = new Date(date.getFullYear(), date.getMonth(), 2).toISOString();
     if (option == "This Month") {
       frequency = 1;
+      let serviceDue = new Date(date.getFullYear(), date.getMonth() + frequency, 0).toISOString();
+      // serviceDue = date.toISOString();
+       
+    
+       this.filteredorders = this.orders.filter(order => {
+       return order.createdAt >= firstDay
+            && order.createdAt <= serviceDue
+       });
     } else if (option == "Last 3 Months"){
-      frequency = 4;
+      frequency = -4;
+      let firstDay = new Date().toISOString();
+      let serviceDue = new Date(date.getFullYear(), date.getMonth() + frequency, 0).toISOString();
+      // serviceDue = date.toISOString();
+       
+       this.filteredorders = this.orders.filter(order => {
+       return order.createdAt <= firstDay
+            && order.createdAt >= serviceDue
+       });
     }
    if(option == "This year") {
     this.filteredorders = this.orders.filter(order => {
       return new Date(order.createdAt).getFullYear() == new Date().getFullYear()
-    });
-   } else {
-  
-     let serviceDue = new Date(date.getFullYear(), date.getMonth() + frequency, 0).toISOString();
-     // serviceDue = date.toISOString();
-      this.filteredorders = this.orders.filter(order => {
-      return order.createdAt >= firstDay
-           && order.createdAt <= serviceDue
     });
    }
     

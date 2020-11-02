@@ -22,6 +22,10 @@ export class ExistingLeadPage implements OnInit {
     });
   }
 
+  ionViewWillEnter (){
+    this.ngOnInit();
+  }
+
   leadCall(lead) {
     localStorage.setItem("editLeadId", lead.id);
     // this.router.navigate(['/new-lead']);

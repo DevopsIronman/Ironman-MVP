@@ -21,6 +21,10 @@ export class ExistingCustomersPage implements OnInit {
     });
   }
 
+  ionViewWillEnter (){
+    this.ngOnInit();
+  }
+
   view(i) {
     console.log(i)
     this.customers[i].open = true

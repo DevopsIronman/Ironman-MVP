@@ -10,9 +10,6 @@ export class NotificationPage implements OnInit {
   constructor(private leadService:LeadService) { }
 
   ngOnInit() {
-    
-    
-    
   }
 
   

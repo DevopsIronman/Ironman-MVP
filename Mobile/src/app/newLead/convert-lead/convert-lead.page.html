@@ -41,10 +41,15 @@
 
    
     <ion-item >
-      <ion-label position="floating">Service Frequency</ion-label>
+      <ion-label position="floating">Service Frequency<span style="color: red;">*</span> </ion-label>
       <ion-input formControlName="serviceFrequency"></ion-input>
     </ion-item>
-    <!-- <ion-item >
+    <div *ngIf="!leadForm.controls.serviceFrequency.valid &&
+    leadForm.controls.serviceFrequency.touched"
+    class="validator-error">
+      service Frequency is mandatory
+</div>
+<!-- <ion-item >
       <ion-label position="floating">Lead</ion-label>
       <ion-input formControlName="lead"></ion-input>
     </ion-item>
@@ -68,13 +73,10 @@
 
     <ion-item *ngIf=dateCheck >
       <ion-label  position="floating">Date</ion-label>
-      <ion-datetime [(ngModel)]="callBackDate" formControlName='callBackDate' displayFormat="DD-MMM-YYYY"></ion-datetime>
+      <ion-datetime  formControlName='callBackDate'[min]="minDate"  max="2040-10-31" displayFormat="MMM DD, YYYY h:mm A"  [(ngModel)]="callBackdate"></ion-datetime>
     </ion-item>
 
-    <ion-item  *ngIf=dateCheck>
-      <ion-label  position="floating">Time</ion-label>
-      <ion-datetime [(ngModel)]="callBackTime" formControlName='callBackTime'  displayFormat="h:mm A" ></ion-datetime>
-    </ion-item>
+   
 
 
     <ion-item  >
@@ -92,15 +94,15 @@
     
  
 
+  </form>
     <div class="btn">
 
-      <ion-button shape="round" routerLink="/new-lead" routerDirection="forward"><ion-icon name="arrow-undo-circle-outline"></ion-icon>Cancel </ion-button>
-      <ion-button shape="round" (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button>  
-      <ion-button shape="round" (click)="submit('customer')"routerLink="/create-customer" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
+     
+      <ion-button shape="round" [disabled] = leadForm.invalid (click)="submit('customer')"routerLink="/create-customer" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
+      <ion-button shape="round"  [disabled] = leadForm.invalid (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button>  
 
     </div>
 
-  </form>
   </div>
 
   </ion-card>

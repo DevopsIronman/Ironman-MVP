@@ -41,7 +41,7 @@ export class NewLeadPage implements OnInit {
         recommendedBreaker: new FormControl(),
   
       });
-      debugger
+      
       this.leadId = this.activeRoute.snapshot.queryParams.lead;
       
       if(this.leadId) {
@@ -77,6 +77,7 @@ export class NewLeadPage implements OnInit {
     }
   
     submit(data) {
+      
       console.log(data, this.leadForm);
       if(this.leads?.id) {
         this.leadService.updateLead(this.leads.id, this.leadForm.value).subscribe((res: any) => {

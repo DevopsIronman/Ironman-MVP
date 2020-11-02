@@ -11,6 +11,11 @@ ion-item{
 ion-back-button {
 	color: black;
 }
+.validator-error {
+	color: red;
+	margin-left: 10px;
+
+}
 
 .btn{
     text-align: center;
@@ -52,3 +57,12 @@ ul {
 border-bottom: 40px solid transparent;
 border-left: 40px solid #3498db;
 }
+
+ion-item.ion-invalid.ion-touched{
+	border-bottom: 2px solid var(--ion-color-danger) !important;
+}
+
+//-- Validation passed
+// ion-item.ion-valid.ion-touched{
+//  border-bottom: 2px solid var(--ion-color-success) !important;
+// }
