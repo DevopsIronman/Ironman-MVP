@@ -11,8 +11,8 @@
   <ion-grid>
     <ion-row>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="12" >
-        <ion-card>
-          <ion-card-header>
+        <ion-card [routerLink]="['/existing-lead']">
+          <ion-card-header >
             <ion-card-subtitle>Total No. of Leads created</ion-card-subtitle>
             <ion-card-title>Leads 
               <span style="float: right;">{{leadsCount}}</span>
@@ -22,7 +22,7 @@
          </ion-card>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="12" >
-        <ion-card>
+        <ion-card [routerLink]="['/existing-customers']">
           <ion-card-header>
             <ion-card-subtitle>Total No. of customers created</ion-card-subtitle>
             <ion-card-title>Customers 
@@ -33,7 +33,7 @@
          </ion-card>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="12" >
-        <ion-card>
+        <ion-card [routerLink]="['/notification']">
           <ion-card-header>
             <ion-card-subtitle>Total No. of call backs booked</ion-card-subtitle>
             <ion-card-title>Total Callbacks 
@@ -44,7 +44,7 @@
          </ion-card>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="12" >
-        <ion-card>
+        <ion-card  [routerLink]="['/notification']">
           <ion-card-header>
             <ion-card-subtitle>Total No. of pending call backs </ion-card-subtitle>
             <ion-card-title>Pending Callbacks 
@@ -55,7 +55,7 @@
          </ion-card>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="4" sizeXs="12" >
-        <ion-card>
+        <ion-card  [routerLink]="['/notification/completed']">
           <ion-card-header>
             <ion-card-subtitle>Total No. of Completed call backs </ion-card-subtitle>
             <ion-card-title>Completed Callbacks 
