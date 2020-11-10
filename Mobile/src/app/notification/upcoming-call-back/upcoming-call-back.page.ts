@@ -16,7 +16,6 @@ private router: Router    ) {
     this.callBackCalc();
     
    }
-
   // ngOnInit() {
     
   //   this.callBackCalc();
@@ -41,7 +40,7 @@ private router: Router    ) {
      resp=res;
      this.callBack = res.data;
      this.callBack.forEach(element => {
-       if(element.callBackDate && new Date(element.callBackDate).toISOString().substring(0, 10) == new Date().toISOString().substring(0, 10)) {
+       if(element.callBackDate && new Date(element.callBackDate).toISOString().substring(0, 10) <= new Date().toISOString().substring(0, 10)) {
          console.log(element.callBackDate)
         //  if(element.callBackTime && new Date(element.callBackTime).getHours() == new Date().get)
         var date1, date2;  
@@ -72,14 +71,16 @@ private router: Router    ) {
         // document.write("<br>Difference (Seconds): "+seconds); 
 
         console.log(hours, minutes);
-
+        if(element.callBackDate && new Date(element.callBackDate).toISOString().substring(0, 10) == new Date().toISOString().substring(0, 10)) {
         if((hours == 23 && minutes >= 45) || (hours == 0 && minutes <= 15)) {
           // this.callBack.push(element);
-          
           element.redAlert = true;
           console.log(hours, minutes);
 
         }
+      } else {
+        element.redAlert = true;
+      }
        }
      });
      console.log(this.callBack);
