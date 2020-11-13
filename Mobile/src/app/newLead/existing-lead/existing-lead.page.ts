@@ -9,7 +9,8 @@ import {LeadService} from '../../service/lead.service'
 })
 export class ExistingLeadPage implements OnInit {
   leads: any;
-  count = 0
+  count = 0;
+  leadsBackup: any;
   constructor(public leadService: LeadService,private router: Router) { }
 
   ngOnInit() {
@@ -18,6 +19,22 @@ export class ExistingLeadPage implements OnInit {
       if (res.success) {
         this.leads = res.data;
         this.count = this.leads.length;
+        this.leadsBackup = this.leads
+      }
+    });
+  }
+
+  async filterList(evt) {
+    this.leads = this.leadsBackup;
+    const searchTerm = evt.srcElement.value;
+  
+    if (!searchTerm) {
+      return;
+    }
+  
+    this.leads = this.leads.filter(currentLead => {
+      if (currentLead.customerName && searchTerm) {
+        return (currentLead.customerName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       }
     });
   }

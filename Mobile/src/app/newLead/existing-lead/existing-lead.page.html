@@ -10,6 +10,8 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar showcancelbutton=""
+  (ionInput)="filterList($event)"></ion-searchbar>
 <ion-card *ngFor="let lead of leads" [routerLink]="['/new-lead']" [queryParams]="{ lead: lead.id }">
   <ion-card-header>
     <ion-card-title>
