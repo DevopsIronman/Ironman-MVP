@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
     ]
     },
     {
-      title: 'Call Back',
+      title: 'Call Backs',
       url: '/notification',
       icon: 'calendar'
     },
