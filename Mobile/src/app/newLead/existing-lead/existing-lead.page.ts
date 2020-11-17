@@ -34,7 +34,7 @@ export class ExistingLeadPage implements OnInit {
   
     this.leads = this.leads.filter(currentLead => {
       if (currentLead.customerName && searchTerm) {
-        return (currentLead.customerName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+        return (currentLead.customerName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1 || currentLead?.mobileNo?.indexOf(searchTerm.toLowerCase()) > -1 ||  currentLead?.city?.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       }
     });
   }

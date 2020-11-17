@@ -40,6 +40,9 @@
   </ion-card-content>
  
 </ion-card> -->
+
+<ion-searchbar showcancelbutton=""
+  (ionInput)="filterList($event)"></ion-searchbar>
 <ion-list>
 <div *ngFor="let customer of customers; let i = index">
 
