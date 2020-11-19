@@ -81,9 +81,14 @@ export class AppComponent implements OnInit {
     ]
     },
     {
-      title: 'Call Backs',
+      title: 'Callbacks',
       url: '/notification',
       icon: 'calendar'
+    },
+    {
+      title: 'Feedback',
+      url: '/feedback',
+      icon: 'chatbubbles'
     },
     {
       title: 'About Us',

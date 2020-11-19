@@ -92,6 +92,10 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
   
   
 ];

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const { Op } = require("sequelize");
-const { CreateLead , ConvertedLead, Ticket, CustomerOrders, CustomerProfile} = require('../models');
+const { CreateLead , ConvertedLead, Ticket, Feedback,  CustomerOrders, CustomerProfile} = require('../models');
 // const {convertedLead} = require('../models');
 
 function sendError(res, err) {
@@ -121,6 +121,16 @@ router.post('/', (req, res) => {
     return new Promise((resolve, reject) => {
         req.body.convertedStatus = "new";
         CreateLead.create(req.body).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    });
+});
+
+router.post('/feedback', (req, res) => {
+    return new Promise((resolve, reject) => {
+        Feedback.create(req.body).then(function (result) {
             sendSuccess(res, result);
         }).catch(function (err) {
             sendError(res, err);

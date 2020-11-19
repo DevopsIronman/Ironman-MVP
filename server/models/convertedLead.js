@@ -22,6 +22,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'service_frequency'
         },
+        callStatus: {
+            type: DataTypes.STRING(250),
+            field: 'call_status'
+        },
         callBack: {
             type: DataTypes.STRING(250),
             field: 'call_back'

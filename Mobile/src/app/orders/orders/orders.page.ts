@@ -55,6 +55,10 @@ export class OrdersPage implements OnInit {
       var last = first + 6; // last day is the first day + 6
       let startday = new Date(curr.setDate(first)).toISOString();
       let lastday = new Date(curr.setDate(last)).toISOString();
+      // let firstDay = new Date().toISOString();
+      // let serviceDue = new Date(date.getFullYear(), date.getMonth() + frequency, 0).toISOString();
+      // // serviceDue = date.toISOString();
+       
        this.filteredorders = this.orders.filter(order => {
        return order.createdAt <= lastday
             && order.createdAt >= startday

@@ -65,6 +65,10 @@ module.exports = function (sequelize, DataTypes) {
             type:DataTypes.STRING(250),
             field:'pipelines',
         },
+        source:{
+            type:DataTypes.STRING(250),
+            field:'source',
+        },
 
         leadAssignedTo:{
             type:DataTypes.STRING(250),
