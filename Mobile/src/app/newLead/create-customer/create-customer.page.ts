@@ -19,6 +19,7 @@ export class CreateCustomerPage implements OnInit {
     this.leadForm = this._formBuilder.group({
       purchaseOrder: new FormControl(),
       productName: new FormControl(),
+      deliveryAddress: new FormControl(),
       quantity: new FormControl(),
       advance: new FormControl(),
       remaining: new FormControl(),

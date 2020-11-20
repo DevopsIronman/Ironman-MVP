@@ -15,6 +15,7 @@ models.Product4 = require("./product4.js")(sequelize, Sequelize);
 models.Product5 = require("./product5.js")(sequelize, Sequelize);
 models.Ticket = require("./ticket.js")(sequelize, Sequelize);
 models.User = require("./user.js")(sequelize, Sequelize);
+models.Feedback = require("./feedback.js")(sequelize, Sequelize);
 // models.SampleData.sync();
 models.User.sync({});
 
@@ -28,6 +29,7 @@ models.Product3.sync();
 models.Product4.sync();
 models.Product5.sync();
 models.Ticket.sync();
+models.Feedback.sync();
 
 Object.keys(models).forEach(modelName => {
     if ('associate' in models[modelName]) {

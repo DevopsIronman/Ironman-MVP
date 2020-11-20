@@ -25,6 +25,7 @@ export class NewLeadPage implements OnInit {
         gstIn: new FormControl(),
         mobileNo: new FormControl(),
         mobileNo2: new FormControl(),
+        source: new FormControl(),
         mailId: new FormControl(),
         mailId2: new FormControl(),
         // breakingSizeVariety: new FormControl(),
@@ -41,6 +42,7 @@ export class NewLeadPage implements OnInit {
         recommendedBreaker: new FormControl(),
   
       });
+      debugger
       this.leadId = this.activeRoute.snapshot.queryParams.lead;
       
       if(this.leadId) {
@@ -59,6 +61,7 @@ export class NewLeadPage implements OnInit {
             this.leadForm.controls["mobileNo2"].setValue(this.leads.mobileNo2);
             this.leadForm.controls["mailId"].setValue(this.leads.mailId);
             this.leadForm.controls["mailId2"].setValue(this.leads.mailId2);
+            this.leadForm.controls["source"].setValue(this.leads.source);
             // this.leadForm.controls["breakingSizeVariety"].setValue(this.leads.breakingSizeVariety);
             this.leadForm.controls["type"].setValue(this.leads.type);
             this.leadForm.controls["product"].setValue(this.leads.product);
@@ -76,8 +79,9 @@ export class NewLeadPage implements OnInit {
     }
   
     submit(data) {
+      debugger
       console.log(data, this.leadForm);
-      if(this.leadId) {
+      if(this.leads?.id) {
         this.leadService.updateLead(this.leads.id, this.leadForm.value).subscribe((res: any) => {
           if (res.success) {
             localStorage.setItem("existingLead", this.leads.id);

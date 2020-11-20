@@ -3,6 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button text="" ></ion-back-button>
     </ion-buttons>
+    <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
     <ion-title>convert Lead</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -30,6 +31,7 @@
       <ion-label position="floating">Price</ion-label>
       <ion-input formControlName="price"></ion-input>
     </ion-item>
+   
 
     <ion-item>
       <ion-label position="floating">Warranty</ion-label>
@@ -76,9 +78,10 @@
       <ion-datetime  formControlName='callBackDate'[min]="minDate"  max="2040-10-31" displayFormat="MMM DD, YY h:mm A"  [(ngModel)]="callBackdate"></ion-datetime>
     </ion-item>
 
-   
-
-
+    <ion-item > 
+      <ion-label position="floating">call back status</ion-label>
+      <ion-input formControlName="callStatus"></ion-input>
+    </ion-item>
     <ion-item  >
       <ion-label position="floating">Quote / Invoice</ion-label>
       <!-- <ion-input formControlName="quoteOrInvoice"> -->

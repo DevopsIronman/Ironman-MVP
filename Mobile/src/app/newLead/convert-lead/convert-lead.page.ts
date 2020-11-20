@@ -31,6 +31,7 @@ export class ConvertLeadPage implements OnInit {
       quoteOrInvoice: new FormControl(),
       callBack: new FormControl(),
       callBackDate: new FormControl(),
+      callStatus: new FormControl(),
       
 
       
@@ -80,7 +81,7 @@ export class ConvertLeadPage implements OnInit {
     if(this.convertedLeadId) {
       this.leadService.updateConvertedLead(this.convertedLeadId,convertedData).subscribe((res: any) => {
         console.log(res)
-        
+        debugger
         if (res.success) {
           localStorage.setItem("convertedLeadId", this.convertedLeadId);
           console.log(res)

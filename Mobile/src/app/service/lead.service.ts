@@ -60,6 +60,11 @@ export class LeadService {
       map(this.extractData1));
   }
 
+  addFeedback(data): Observable<any> {
+    return this.http.post<any>(this.API_URL+'/api/createLead/feedback', data).pipe(
+      map(this.extractData1));
+  }
+
   updateLead(id, data): Observable<any> {
     return this.http.put<any>(this.API_URL+'/api/createLead/updateNewLead/'+id, data).pipe(
       map(this.extractData1));

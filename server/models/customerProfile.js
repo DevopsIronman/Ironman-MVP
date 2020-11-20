@@ -33,6 +33,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'payment_type'
         },
+        deliveryAddress: {
+            type: DataTypes.STRING(250),
+            field: 'delivery_address'
+        },
         deliveryTypeTime: {
             type: DataTypes.STRING(250),
             field: 'delivery_type_time'
