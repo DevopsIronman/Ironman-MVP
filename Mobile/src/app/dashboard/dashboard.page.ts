@@ -14,6 +14,7 @@ export class DashboardPage implements OnInit {
   allCallbackCount:number =0;
   completedCallbackCount:number =0;
   pendingCallBackCount:number =0;
+  feedbackCount:number =0;
   
   constructor(public leadService: LeadService) { }
 
@@ -30,6 +31,7 @@ export class DashboardPage implements OnInit {
     this.customersCount();
     this.pendingCallback();
     this.completedCallbacks();
+    this.getFeedbacks();
 
   }
   
@@ -65,6 +67,15 @@ export class DashboardPage implements OnInit {
       if (res.success) {
         this.completedCallbackCount = res.data.length;
         this.allCallbackCount = this.completedCallbackCount + this.pendingCallBackCount;
+      }
+    });
+  }
+
+  getFeedbacks() {
+    this.leadService.getFeedbacks().subscribe((res: any) => {
+      console.log(res)
+      if (res.success) {
+        this.feedbackCount = res.data.length;
       }
     });
   }

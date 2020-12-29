@@ -89,7 +89,7 @@
     <ion-item >
       <ion-label position="floating"> Machine Type</ion-label>
       <!-- <ion-input formControlName="excavatorModel"> -->
-        <ion-select  formControlName="type">
+        <ion-select interface="popover"  formControlName="type">
           <ion-select-option value="Excavator">Excavator </ion-select-option>
           <ion-select-option value="Backhoe Loader">Backhoe Loader</ion-select-option>
         </ion-select>
@@ -110,7 +110,7 @@
     <ion-item >
       <ion-label position="floating">Purpose</ion-label>
       <!-- <ion-input formControlName="purpose"></ion-input> -->
-      <ion-select formControlName="purpose">
+      <ion-select interface="popover" formControlName="purpose">
         <ion-select-option value="Primary">Primary</ion-select-option>
         <ion-select-option value="Secondary">Secondary</ion-select-option>
       </ion-select>
@@ -118,7 +118,7 @@
     <ion-item >
       <ion-label position="floating">Machine Make & Model</ion-label>
       <!-- <ion-input formControlName="machineMakeModel"></ion-input> -->
-      <ion-select (ionChange)="setBreaker($event)" formControlName="machineMakeModel">
+      <ion-select interface="popover" (ionChange)="setBreaker($event)" formControlName="machineMakeModel">
         <ion-select-option value="Hyundai R 110">Hyundai R 110</ion-select-option>
         <ion-select-option value="Hyundai R 140">Hyundai R 140</ion-select-option>
         <ion-select-option value="Tatahitachi EX 110">Tatahitachi EX 110</ion-select-option>
@@ -146,21 +146,21 @@
     </ion-item>
     <ion-item >
       <ion-label position="floating">Breaker</ion-label>
-      <ion-select formControlName="existingBreaker">
+      <ion-select interface="popover" formControlName="existingBreaker">
         <ion-select-option value="Yes">Yes</ion-select-option>
         <ion-select-option value="No">No</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item >
       <ion-label position="floating">Pipelines</ion-label>
-      <ion-select formControlName="pipelines">
+      <ion-select interface="popover" formControlName="pipelines">
         <ion-select-option value="YES">YES</ion-select-option>
         <ion-select-option value="NO">NO</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
     <ion-label position="floating">Lead Created By</ion-label>
-    <ion-select formControlName="leadAssigned">
+    <ion-select interface="popover" formControlName="leadAssigned">
       <ion-select-option value="MANO - TN">MANO - TN</ion-select-option>
       <ion-select-option value="AJEES - KL">AJEES - KL</ion-select-option>
       <ion-select-option value="SWAPNA - KA & AP">SWAPNA - KA & AP</ion-select-option>
@@ -170,7 +170,7 @@
   </ion-item>
     <ion-item>
     <ion-label position="floating">Lead Assigned To</ion-label>
-    <ion-select formControlName="leadAssignedTo">
+    <ion-select interface="popover" formControlName="leadAssignedTo">
       <ion-select-option value="MANO - TN">MANO - TN</ion-select-option>
       <ion-select-option value="AJEES - KL">AJEES - KL</ion-select-option>
       <ion-select-option value="SWAPNA - KA & AP">SWAPNA - KA & AP</ion-select-option>
