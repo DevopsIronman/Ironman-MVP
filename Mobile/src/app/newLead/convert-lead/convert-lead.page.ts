@@ -52,7 +52,7 @@ export class ConvertLeadPage implements OnInit {
             this.leadForm.controls["serviceFrequency"].setValue(this.leads.serviceFrequency);
             this.leadForm.controls["callBack"].setValue(this.leads.callBack);
             this.leadForm.controls["callBackDate"].setValue(this.leads.callBackDate);
-            // this.leadForm.controls["callBackTime"].setValue(this.leads.callBackTime);
+            this.leadForm.controls["callStatus"].setValue(this.leads.callStatus);
             this.leadForm.controls["followUpTask"].setValue(this.leads.followUpTask);
             this.leadForm.controls["result"].setValue(this.leads.result);
             this.leadForm.controls["quoteOrInvoice"].setValue(this.leads.quoteOrInvoice);
@@ -81,7 +81,6 @@ export class ConvertLeadPage implements OnInit {
     if(this.convertedLeadId) {
       this.leadService.updateConvertedLead(this.convertedLeadId,convertedData).subscribe((res: any) => {
         console.log(res)
-        debugger
         if (res.success) {
           localStorage.setItem("convertedLeadId", this.convertedLeadId);
           console.log(res)

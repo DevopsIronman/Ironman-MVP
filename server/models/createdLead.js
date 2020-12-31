@@ -49,6 +49,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'purpose'
         },
+        machineWorkingHours: {
+            type: DataTypes.STRING(250),
+            field: 'machine_working_hours'
+        },
         product: {
             type: DataTypes.STRING(250),
             field: 'product'

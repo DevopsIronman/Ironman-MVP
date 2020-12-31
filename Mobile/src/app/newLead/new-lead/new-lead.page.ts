@@ -34,6 +34,7 @@ export class NewLeadPage implements OnInit {
         purpose: new FormControl(),
         product: new FormControl(),
         machineMakeModel: new FormControl(),
+        machineWorkingHours: new FormControl(),
         existingBreaker: new FormControl(),
         pipelines: new FormControl(),
         leadAssigned: new FormControl(),
@@ -42,7 +43,6 @@ export class NewLeadPage implements OnInit {
         recommendedBreaker: new FormControl(),
   
       });
-      debugger
       this.leadId = this.activeRoute.snapshot.queryParams.lead;
       
       if(this.leadId) {
@@ -73,13 +73,13 @@ export class NewLeadPage implements OnInit {
             this.leadForm.controls["leadAssignedTo"].setValue(this.leads.leadAssignedTo);
             this.leadForm.controls["convertedStatus"].setValue(this.leads.convertedStatus);
             this.leadForm.controls["recommendedBreaker"].setValue(this.leads.recommendedBreaker);
+            this.leadForm.controls["machineWorkingHours"].setValue(this.leads.machineWorkingHours);
           }
         });
       }
     }
   
     submit(data) {
-      debugger
       console.log(data, this.leadForm);
       if(this.leads?.id) {
         this.leadService.updateLead(this.leads.id, this.leadForm.value).subscribe((res: any) => {
