@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 import {LeadService} from '../../service/lead.service'
 import { Router } from '@angular/router';
 
-import { HTTP } from '@ionic-native/http/ngx';
+
 
 @Component({
   selector: 'app-create-customer',
@@ -13,7 +13,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 export class CreateCustomerPage implements OnInit {
   leadForm: any;
   constructor( private router: Router, private _formBuilder: FormBuilder, public leadService: LeadService,
-    public http:HTTP ) { }
+     ) { }
 
   ngOnInit() {
     this.leadForm = this._formBuilder.group({
