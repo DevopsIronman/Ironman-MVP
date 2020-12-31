@@ -16,7 +16,7 @@
   <ion-card-header>
     <ion-card-title>
       <ion-avatar >
-        {{lead.customerName[0]}}
+        {{(lead.customerName)? lead.customerName[0]:''}}
       </ion-avatar>  <ion-label>{{lead.customerName}}</ion-label>
     </ion-card-title>
   </ion-card-header>

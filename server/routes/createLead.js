@@ -164,7 +164,11 @@ router.put('/updateTicket/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         // req.body.convertedStatus = "new";
         Ticket.update(req.body , { where: { id: req.params.id } }).then(function (result) {
-            sendSuccess(res, result);
+            Ticket.findOne({ where: { deleteStatus: false,  id: req.params.id }   }).then(function (ticketresult) {
+                ConvertedLead.update({ callBackDate: req.body.callBackDate,}, { where: { id: ticketresult.convertedLeadId } }).then(function (leadResult) { 
+                    sendSuccess(res, result);
+                });
+             });
         }).catch(function (err) {
             sendError(res, err);
         });

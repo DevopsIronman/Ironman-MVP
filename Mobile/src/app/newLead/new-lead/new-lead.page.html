@@ -77,8 +77,11 @@
       <ion-input  formControlName="mailId2"></ion-input>
     </ion-item>
     <ion-item >
-      <ion-label position="floating">Source</ion-label>
-      <ion-input  formControlName="source"></ion-input>
+      <ion-label position="floating">Referred By</ion-label>
+      <ion-select interface="popover"  formControlName="source">
+        <ion-select-option value="Internal">Internal </ion-select-option>
+        <ion-select-option value="External">External</ion-select-option>
+      </ion-select>
     </ion-item>
 
     <!-- <ion-item>
@@ -114,6 +117,10 @@
         <ion-select-option value="Primary">Primary</ion-select-option>
         <ion-select-option value="Secondary">Secondary</ion-select-option>
       </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label position="floating">Machine Working Hours/day</ion-label>
+      <ion-input formControlName="machineWorkingHours"></ion-input>
     </ion-item>
     <ion-item >
       <ion-label position="floating">Machine Make & Model</ion-label>
