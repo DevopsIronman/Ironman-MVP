@@ -21,6 +21,11 @@ export class LeadService {
     return this.http.get<any>(this.API_URL+'/api/createLead/').pipe(
       map(this.extractData1));
   }
+
+  getFeedbacks(): Observable<any> {
+    return this.http.get<any>(this.API_URL+'/api/createLead/feedbacks').pipe(
+      map(this.extractData1));
+  }
   getSingleLead(id): Observable<any> {
     return this.http.get<any>(this.API_URL+'/api/createLead/lead/'+id).pipe(
       map(this.extractData1));

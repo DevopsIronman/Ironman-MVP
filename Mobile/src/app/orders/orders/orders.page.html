@@ -13,8 +13,8 @@
     <ion-label position="floating">Filter</ion-label>
     
       <ion-select [(ngModel)]="option" (ionChange)="focus(option)">
-        <ion-select-option  [value]="item">This Month</ion-select-option>
         <ion-select-option  [value]="item">This week</ion-select-option>
+        <ion-select-option  [value]="item">This Month</ion-select-option>
         <ion-select-option  [value]="item">This year</ion-select-option>
         
       </ion-select>
