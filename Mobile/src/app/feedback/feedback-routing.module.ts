@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: FeedbackPage
+  },
+  {
+    path: 'feedback-list',
+    loadChildren: () => import('./feedback-list/feedback-list.module').then( m => m.FeedbackListPageModule)
   }
 ];
 

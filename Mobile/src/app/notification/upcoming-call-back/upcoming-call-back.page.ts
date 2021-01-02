@@ -43,9 +43,8 @@ private router: Router    ) {
     console.log('ionViewWillLeave')
   }
   async nav(call) {
-    debugger
     this.router.navigate(['/notification/completed']); 
-    await this.router.navigate(['/call-back-details'], { queryParams: {callbackId: call.id, createdLeadId: call.createdLeadId, convertedLeadId: call.convertedLeadId  } });
+    await this.router.navigate(['/call-back-details'], { queryParams: {callbackId: call.id, createdLeadId: call.createdLeadId, convertedLeadId: call.convertedLeadId, comments: call.comments } });
   }
   ionViewWillUnload() {
     console.log('ionViewWillUnload')
@@ -92,11 +91,9 @@ private router: Router    ) {
         // document.write("<br>Difference (Seconds): "+seconds); 
 
         console.log(hours, minutes);
-        debugger
         if(element.callBackDate && new Date(element.callBackDate).toISOString().substring(0, 10) == new Date().toISOString().substring(0, 10)) {
         if((hours == 23 && minutes >= 45) || (hours == 0 && minutes <= 15)) {
           // this.callBack.push(element);
-          debugger
           element.redAlert = true;
           console.log(hours, minutes);
 

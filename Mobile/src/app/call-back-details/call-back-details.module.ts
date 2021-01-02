@@ -9,6 +9,7 @@ import { CallBackDetailsPageRoutingModule } from './call-back-details-routing.mo
 
 import { CallBackDetailsPage } from './call-back-details.page';
 import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
+import { IonicTimepickerModule } from  '@logisticinfotech/ionic-timepicker';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
     IonicModule,
     ReactiveFormsModule,
     Ionic4DatepickerModule,
+    IonicTimepickerModule,
     CallBackDetailsPageRoutingModule
   ],
   declarations: [CallBackDetailsPage]

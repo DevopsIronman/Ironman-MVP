@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 import {LeadService} from '../service/lead.service'
 import { NavController, Platform } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { Ionic4DatepickerModalComponent } from '@logisticinfotech/ionic4-datepicker';;
+// import { Ionic4DatepickerModalComponent } from '@logisticinfotech/ionic4-datepicker';;
 
 @Component({
   selector: 'app-call-back-details',
@@ -75,23 +75,46 @@ export class CallBackDetailsPage implements OnInit {
 
   selectedDate;
 
+  myTime = '12:00'; 
+// (please assign time with proper format which is describe below)
+timePickerObj = {
+    inputTime: '', // for 12 hour time in timePicker
+    timeFormat: 'HH:mm', // default 'hh:mm A'
+    setLabel: 'Set', // default 'Set'
+    closeLabel: 'Close', // default 'Close'
+    titleLabel: 'Select a Time', // default 'Time'
+    clearButton: false, // default true
+    btnCloseSetInReverse: true, // default false
+    momentLocale: 'pt-BR', //  default 'en-US'
+
+    btnProperties: {
+        expand: '', // "block" | "full" (deafault 'block')
+        fill: '', // "clear" | "default" | "outline" | "solid" 
+                 // (deafault 'solid')
+        size: '', // "default" | "large" | "small" (deafault 'default')
+        disabled: '', // boolean (default false)
+        strong: '', // boolean (default false)
+        color: ''
+        // "primary", "secondary", "tertiary", "success", 
+        // "warning", "danger", "light", "medium", "dark" , 
+        // and give color in string (default 'primary')
+      }
+    };
+
   constructor(private router: Router, public modalCtrl: ModalController, public navController:NavController ,public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
 
   ngOnInit() {
-    
-    console.log(this.minDate)
     this.callBackfrom = this._formBuilder.group({
       comments: new FormControl('',[Validators.required]),
     });
     this.rescheduleForm = this._formBuilder.group({
       callBackDate: new FormControl('',[Validators.required]),
-      // callBackTime: new FormControl('',[Validators.required]),
+      callBackTime: new FormControl('',[Validators.required]),
     });
     this.callBackId = this.activeRoute.snapshot.queryParams.callbackId;
     this.createdLeadId = this.activeRoute.snapshot.queryParams.createdLeadId;
     this.convertedLeadId = this.activeRoute.snapshot.queryParams.convertedLeadId;
     this.comments = this.activeRoute.snapshot.queryParams.comments;
-
     this.leadService.getSingleLead(this.createdLeadId).subscribe((res: any) => {
       console.log(res)
       this.customer = res.data[0];
@@ -99,12 +122,19 @@ export class CallBackDetailsPage implements OnInit {
     this.leadService.getSingleConvertedLeadCB(this.convertedLeadId).subscribe((res: any) => {
       console.log(res)
       this.customerProfile = res.data[0];
-
     });
     if(this.comments) {
       console.log(this.comments);
       this.callBackfrom.controls["comments"].setValue(this.comments);
     }
+  }
+
+  changedetect(){
+    let selDate = this.rescheduleForm.value.callBackDate +' ' +this.rescheduleForm.value.callBackTime 
+    let selectedDate = new Date(selDate);
+    let today = (new Date().getDate()).toString() +'/'  +(new Date().getMonth()+1).toString()+ '/'+ (new Date().getFullYear().toString()) + " " + (new Date().getHours().toString()) + ":" + (new Date().getMinutes())
+    let temp = (new Date(selDate).getTime() - new Date(today).getTime())/60000
+    console.log(temp);
   }
 
   submit(status) {
@@ -133,9 +163,11 @@ export class CallBackDetailsPage implements OnInit {
   }
 
   submitReschedule(status) {
+    let selDate = this.rescheduleForm.value.callBackDate +' ' +this.rescheduleForm.value.callBackTime 
+    let selectedDate = new Date(selDate);
     let data = {
-      callBackDate: this.rescheduleForm.value.callBackDate,
-      callBackTime: this.rescheduleForm.value.callBackTime,
+      callBackDate: selectedDate,
+      // callBackTime: this.rescheduleForm.value.callBackTime,
     }
     this.leadService.updateTicket(this.callBackId, data ).subscribe((res: any) => {
       console.log(res);
@@ -147,25 +179,25 @@ export class CallBackDetailsPage implements OnInit {
     });
   }
 
-  async openDatePicker() {
-    const datePickerModal = await this.modalCtrl.create({
-      component: Ionic4DatepickerModalComponent,
-      cssClass: 'li-ionic4-datePicker',
-      componentProps: { 
-         'objConfig': this.datePickerObj, 
-         'selectedDate': this.selectedDate 
-      }
-    });
-    await datePickerModal.present();
+  // async openDatePicker() {
+  //   const datePickerModal = await this.modalCtrl.create({
+  //     component: Ionic4DatepickerModalComponent,
+  //     cssClass: 'li-ionic4-datePicker',
+  //     componentProps: { 
+  //        'objConfig': this.datePickerObj, 
+  //        'selectedDate': this.selectedDate 
+  //     }
+  //   });
+  //   await datePickerModal.present();
 
-    datePickerModal.onDidDismiss()
-      .then((data) => {
-        console.log(data);
-        if(data.data.date != 'Data inválida') {
+  //   datePickerModal.onDidDismiss()
+  //     .then((data) => {
+  //       console.log(data);
+  //       if(data.data.date != 'Data inválida') {
 
-          this.selectedDate = data.data.date;
-        }
-      });
-  }
+  //         this.selectedDate = data.data.date;
+  //       }
+  //     });
+  // }
 }
 

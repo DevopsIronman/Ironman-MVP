@@ -116,18 +116,25 @@
 <form name="rescheduleForm" [formGroup]="rescheduleForm" *ngIf = 'reschedule'>
 
   <ion-item >
-    <ion-label  position="floating">Date & time</ion-label>
+    <ion-label  position="floating">Date</ion-label>
     <li-ionic4-datepicker [(ngModel)]="(callBackDate == 'Data inválida')? myDate:callBackDate" formControlName='callBackDate'
-    [inputDateConfig]="datePickerObj" (ionChange)="myFunction()"></li-ionic4-datepicker>
+    [inputDateConfig]="datePickerObj"  (ionChange)="myFunction()"></li-ionic4-datepicker>
+    <!-- <ion-datetime [(ngModel)]="callBackDate" formControlName='callBackDate' [min]="minDate"  max="2040-10-31" displayFormat="MMM DD, YY hh:mm A"></ion-datetime> -->
+  </ion-item>
+  <ion-item >
+    <ion-label  position="floating">Time</ion-label>
+    <li-ionic-timepicker [(ngModel)]="callBackTime"  formControlName='callBackTime'
+    [inputTimeConfig]="timePickerObj" (ngModelChange)="changedetect()"></li-ionic-timepicker>
     <!-- <ion-datetime [(ngModel)]="callBackDate" formControlName='callBackDate' [min]="minDate"  max="2040-10-31" displayFormat="MMM DD, YY hh:mm A"></ion-datetime> -->
   </ion-item>
 
+
   <!-- <li-ionic4-datepicker [(ngModel)]="mydate"
     [inputDateConfig]="datePickerObj"></li-ionic4-datepicker> -->
-  <ion-input readonly [(ngModel)]="mydate"
+  <!-- <ion-input readonly [(ngModel)]="mydate"
     [liIonic4Datepicker]="datePickerObj"
     (ionChange)="myFunction()">
-</ion-input>
+</ion-input> -->
   
 
   <!-- <ion-item  >
