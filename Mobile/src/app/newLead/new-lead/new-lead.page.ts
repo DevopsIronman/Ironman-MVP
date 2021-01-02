@@ -16,7 +16,7 @@ export class NewLeadPage implements OnInit {
 
   ngOnInit() {
       this.leadForm = this._formBuilder.group({
-        customerName: new FormControl(),
+        customerName: new FormControl('', Validators.required),
         companyName: new FormControl(),
         address: new FormControl(),
         city: new FormControl(),

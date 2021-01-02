@@ -96,6 +96,10 @@ const routes: Routes = [
     path: 'feedback',
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
+  {
+    path: 'feedback-list',
+    loadChildren: () => import('./feedback/feedback-list/feedback-list.module').then( m => m.FeedbackListPageModule)
+  }
   
   
 ];

@@ -202,8 +202,8 @@
     <div class="btn">
 
      
-       <ion-button shape="round" (click)="submit('new')" [routerLink]="['/convert-lead']"  [queryParams]="{ lead: leadId}" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
-       <ion-button shape="round" (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button> 
+       <ion-button shape="round" [disabled]='leadForm.invalid' (click)="submit('new')" [routerLink]="['/convert-lead']"  [queryParams]="{ lead: leadId}" routerDirection="forward"> Next <ion-icon name="arrow-redo-circle-outline"></ion-icon></ion-button>
+       <ion-button shape="round"  [disabled]='leadForm.invalid' (click)="submit('lead')">Save & Exit <ion-icon name="document-text-outline"></ion-icon></ion-button> 
     </div>
 
   </form>
