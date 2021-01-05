@@ -42,6 +42,16 @@ router.get('/feedbacks', (req, res) => {
     })
 })
 
+router.get('/feedbacks/:id', (req, res) => {
+    return new Promise((resolve, reject) => {
+        Feedback.findAll({ where: { deleteStatus: false, id: req.params.id },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+
 router.get('/lead/:id', (req, res) => {
     return new Promise((resolve, reject) => {
         CreateLead.findAll({ where: { deleteStatus: false, id: req.params.id },  }).then(function (result) {

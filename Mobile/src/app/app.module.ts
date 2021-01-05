@@ -12,11 +12,10 @@ import { ReactiveFormsModule ,FormsModule  } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
-
  import { NotificationPage} from './notification/notification.page';
  import { IonicRatingModule } from 'ionic4-rating';
  import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
-
+ import { IonicTimepickerModule } from  '@logisticinfotech/ionic-timepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
     IonicRatingModule,
+    IonicTimepickerModule,
     
   ],
   providers: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { LeadService } from '../service/lead.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feedback',
@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
 export class FeedbackPage implements OnInit {
   rate = 5;
   feedBackForm: any;
+  id;
 
-  constructor(private router: Router, private _formBuilder: FormBuilder, public leadService: LeadService) { }
+  constructor(private router: Router,public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
 
   ngOnInit() {
+    this.id = this.activeRoute.snapshot.queryParams.id;
+    console.log(this.id);
     this.feedBackForm = this._formBuilder.group({
       customerName: new FormControl('',[Validators.required]),
       companyName: new FormControl('',[Validators.required]),
@@ -24,11 +27,38 @@ export class FeedbackPage implements OnInit {
       satisfied: new FormControl(),
       accessibleManner: new FormControl(),
       problem: new FormControl(),
+      satisfiedComments: new FormControl(),
+      accessibleMannerComments: new FormControl(),
+      problemComments: new FormControl(),
     });
-  }
+    if(this.id) {
+      this.leadService.getFeedbackWithid(this.id).subscribe((res: any) => {
+        console.log(res)
+        if (res.success) {
+          this.feedBackForm.controls["customerName"].setValue(res.data[0].customerName);
+          this.feedBackForm.controls["companyName"].setValue(res.data[0].companyName);
+          this.feedBackForm.controls["email"].setValue(res.data[0].email);
+          this.feedBackForm.controls["mobileNo"].setValue(res.data[0].mobileNo);
+          this.feedBackForm.controls["rate"].setValue(res.data[0].rate);
+          this.feedBackForm.controls["satisfied"].setValue(res.data[0].satisfied);
+          this.feedBackForm.controls["accessibleManner"].setValue(res.data[0].accessibleManner);
+          this.feedBackForm.controls["problem"].setValue(res.data[0].problem);
+          this.feedBackForm.controls["satisfiedComments"].setValue(res.data[0].satisfiedComments);
+          this.feedBackForm.controls["accessibleMannerComments"].setValue(res.data[0].accessibleMannerComments);
+          this.feedBackForm.controls["problemComments"].setValue(res.data[0].problemComments);
 
+          
+        }
+      });
+
+    }
+  }
+rates;
   submit() {
     console.log(this.feedBackForm.value);
+    this.rates  = (this.feedBackForm.value.problem + this.feedBackForm.value.accessibleManner + this.feedBackForm.value.satisfied) / 3;
+    console.log(this.rates)
+    this.feedBackForm.value.rate = this.rates;
     this.leadService.addFeedback(this.feedBackForm.value).subscribe((res: any) => {
       console.log(res);
       this.feedBackForm.reset();
