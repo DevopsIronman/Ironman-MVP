@@ -52,37 +52,55 @@
         class="validator-error">
          Please Enter a valid Mobile Number
       </div>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label  style="
         margin-bottom: 10px;"
-     position="floating">Please rate our service</ion-label>
-        <rating formControlName="rate"
-        readonly="false" 
+     position="stacked">Please rate our service</ion-label>
+        <rating formControlName="rate" [rate]='rates'
+        readonly="true" 
         size="default">
         </rating>
-      </ion-item>
+      </ion-item> -->
       <ion-item text-wrap>
-        <ion-label text-wrap >Are you satisfied with the service?</ion-label>
-        <ion-select formControlName="satisfied">
+        <ion-label text-wrap style="
+        margin-bottom: 10px;"
+     position="stacked" >Level of satisfaction with our service</ion-label>
+        <rating formControlName="satisfied"
+        readonly="false" 
+        size="default"></rating>
+        <ion-textarea formControlName="satisfiedComments" placeholder="Comments..."></ion-textarea>
+        <!-- <ion-select formControlName="satisfied">
           <ion-select-option>yes</ion-select-option>
           <ion-select-option>No</ion-select-option>
-        </ion-select>
+        </ion-select> -->
       </ion-item>
-      <ion-item text-wrap>
-        <ion-label text-wrap >Was our customer service provided to you in an accessible manner?</ion-label>
-        <ion-select formControlName="accessibleManner">
+      <ion-item text-wrap class="label">
+        <ion-label text-wrap style="
+        margin-bottom: 10px;" position="stacked">Accessibility of our customer service provided to you </ion-label>
+        <rating formControlName="accessibleManner"
+        readonly="false" 
+        size="default"></rating>
+        <ion-textarea formControlName="accessibleMannerComments" placeholder="Comments..."></ion-textarea>
+
+        <!-- <ion-select formControlName="accessibleManner">
           <ion-select-option>yes</ion-select-option>
           <ion-select-option>No</ion-select-option>
-        </ion-select>
+        </ion-select> -->
       </ion-item>
       <ion-item text-wrap>
-        <ion-label text-wrap >Did you experience any problems in accessing our service?</ion-label>
-        <ion-select formControlName="problem">
+        <ion-label text-wrap style="
+        margin-bottom: 10px;" position="stacked">How smooth have you accessed our service</ion-label>
+        <rating formControlName="problem"
+        readonly="false" 
+        size="default"></rating>
+        <ion-textarea formControlName="problemComments" placeholder="Comments..."></ion-textarea>
+
+        <!-- <ion-select formControlName="problem">
           <ion-select-option>yes</ion-select-option>
           <ion-select-option>No</ion-select-option>
-        </ion-select>
+        </ion-select> -->
       </ion-item>
-      <div class="btn">
+      <div class="btn" *ngIf = "!id">
         <ion-button shape="round" [disabled]="feedBackForm.invalid" (click)="submit()" >Submit <ion-icon name="checkmark-circle-outline"></ion-icon></ion-button>
       </div>
 

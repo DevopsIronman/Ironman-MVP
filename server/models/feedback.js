@@ -42,6 +42,18 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'problem'
         },
+        satisfiedComments: {
+            type: DataTypes.STRING(250),
+            field: 'satisfied_comments'
+        },
+        accessibleMannerComments: {
+            type: DataTypes.STRING(250),
+            field: 'accessible_manner_comments'
+        },
+        problemComments: {
+            type: DataTypes.STRING(250),
+            field: 'problem_comments'
+        },
         createdBy: {
             type: DataTypes.STRING(50),
             field: 'created_by'
