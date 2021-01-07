@@ -16,7 +16,7 @@ models.Product5 = require("./product5.js")(sequelize, Sequelize);
 models.Ticket = require("./ticket.js")(sequelize, Sequelize);
 models.User = require("./user.js")(sequelize, Sequelize);
 models.Feedback = require("./feedback.js")(sequelize, Sequelize);
-// models.SampleData.sync();
+
 models.User.sync({});
 
 models.CreateLead.sync();

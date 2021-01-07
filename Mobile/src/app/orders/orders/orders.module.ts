@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { OrdersPageRoutingModule } from './orders-routing.module';
 
 import { OrdersPage } from './orders.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { OrdersPage } from './orders.page';
     FormsModule,
     IonicModule,
     OrdersPageRoutingModule
+  ],
+  providers: [
+    CallNumber,
   ],
   declarations: [OrdersPage]
 })

@@ -1,20 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="" ></ion-back-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
     <ion-img class="header" slot="end" src="assets/images/smm_logo.png"></ion-img>
     <ion-title>Customer Details</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div class= "header">
-    <ion-label class="customer-name"> 
-      
+  <div class="header">
+    <ion-label class="customer-name">
       <h2>{{customer?.companyName }}</h2>
       <h2>{{customer?.customerName }}</h2>
-      <p>{{customer?.mobileNo }} </p>
+      <p *ngIf='customer?.mobileNo' (click)="launchDialer(customer.mobileNo)">{{customer?.mobileNo }} </p>
+      <p *ngIf='!customer?.mobileNo'>{{customer?.mobileNo }} </p>
       <p>{{customer?.mailId }}</p>
       <p>{{customer?.city }}</p>
     </ion-label>
@@ -40,7 +39,11 @@
       <ion-label>GSTIN No. : </ion-label>
       <ion-label>{{customer?.gstIn }}</ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf='customer?.mobileNo' (click)="launchDialer(customer.mobileNo)">
+      <ion-label>Alt Mobile No. : </ion-label>
+      <ion-label>{{customer?.mobileNo2 }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf='!customer?.mobileNo'>
       <ion-label>Alt Mobile No. : </ion-label>
       <ion-label>{{customer?.mobileNo2 }}</ion-label>
     </ion-item>
@@ -48,7 +51,7 @@
       <ion-label>Alt Mail Id : </ion-label>
       <ion-label>{{customer?.mailId2 }}</ion-label>
     </ion-item>
-    
+
     <ion-item>
       <ion-label>Referred By : </ion-label>
       <ion-label>{{customer?.source }}</ion-label>
@@ -57,17 +60,17 @@
       <ion-label>Machine Type : </ion-label>
       <ion-label>{{customer?.type }}</ion-label>
     </ion-item>
-    
+
     <ion-item>
       <ion-label>Purpose : </ion-label>
       <ion-label>{{customer?.purpose }}</ion-label>
     </ion-item>
-    
+
     <ion-item>
       <ion-label>Machine Working Hours/day : </ion-label>
       <ion-label>{{customer?.machineWorkingHours }}</ion-label>
     </ion-item>
-    
+
     <ion-item>
       <ion-label>Machine Make & Model : </ion-label>
       <ion-label>{{customer?.machineMakeModel }}</ion-label>
@@ -106,7 +109,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Service Frequency: </ion-label>
-      <ion-label>{{customer?.ConvertedLeads[0]?.serviceFrequency }}  days</ion-label>
+      <ion-label>{{customer?.ConvertedLeads[0]?.serviceFrequency }} days</ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Follow Up Task: </ion-label>
@@ -162,11 +165,11 @@
     </ion-item>
     <ion-item>
       <ion-label>Technician Lead / Commisioning : </ion-label>
-      <ion-label>{{customerProfile?.techLead }}  </ion-label>
+      <ion-label>{{customerProfile?.techLead }} </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Service Report : </ion-label>
-      <ion-label>{{customerProfile?.serviceReport }}  </ion-label>
+      <ion-label>{{customerProfile?.serviceReport }} </ion-label>
     </ion-item>
     <ion-item>
       <ion-label>Feedback : </ion-label>
@@ -175,11 +178,11 @@
     <ion-item>
       <ion-label>Purchased on : </ion-label>
       <ion-label>{{customerProfile?.createdAt | date}} </ion-label>
-    </ion-item>     
+    </ion-item>
     <ion-item>
       <ion-label>Service Due : </ion-label>
       <ion-label>{{serviceDue | date}}</ion-label>
-    </ion-item>    
+    </ion-item>
   </div>
 
 </ion-content>

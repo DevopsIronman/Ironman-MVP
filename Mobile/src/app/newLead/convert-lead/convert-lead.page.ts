@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
-import {LeadService} from '../../service/lead.service'
+import { LeadService } from '../../service/lead.service'
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,42 +9,35 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./convert-lead.page.scss'],
 })
 export class ConvertLeadPage implements OnInit {
-  dateCheck:boolean = false;
+  dateCheck: boolean = false;
   leadForm: any;
   leads: any;
   convertedLeadId: any;
   leadId: any;
   minDate: string = new Date().toISOString();
   callBackdate;
-  constructor( private router: Router, public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService ) { }
+  constructor(private router: Router, public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
 
   ngOnInit() {
     this.leadForm = this._formBuilder.group({
-      // recommendedBreaker: new FormControl(),
       price: new FormControl(),
       warranty: new FormControl(),
       serviceFrequency: new FormControl("", Validators.required),
-      // lead: new FormControl(),
-      // machineCapacity: new FormControl(),
       followUpTask: new FormControl(),
       result: new FormControl(),
       quoteOrInvoice: new FormControl(),
       callBack: new FormControl(),
       callBackDate: new FormControl(),
       callStatus: new FormControl(),
-      
 
-      
+
+
     });
-
-    // let leadId = localStorage.getItem('editLeadId');
     this.leadId = this.activeRoute.snapshot.queryParams.lead;
-    if(this.leadId) {
+    if (this.leadId) {
       this.leadService.getSingleConvertedLead(this.leadId).subscribe((res: any) => {
-        console.log(res)
         if (res.success) {
-          if(res.data.length >0) {
-           
+          if (res.data.length > 0) {
             this.leads = res.data[0];
             this.convertedLeadId = this.leads.id;
             this.leadForm.controls["price"].setValue(this.leads.price);
@@ -64,27 +57,25 @@ export class ConvertLeadPage implements OnInit {
 
   }
 
-  datepicker(event){
-    if(event.target.value == 'yes') {
+  datepicker(event) {
+    if (event.target.value == 'yes') {
       this.dateCheck = true;
     } else {
       this.dateCheck = false;
     }
-    
+
   }
 
   submit(data) {
     let id = localStorage.getItem('newLeadId');
     localStorage.setItem('price', this.leadForm.value.price);
     let convertedData = this.leadForm.value;
-    convertedData.createdLeadId  = (this.leadId)? this.leadId : id;
-    if(this.convertedLeadId) {
-      this.leadService.updateConvertedLead(this.convertedLeadId,convertedData).subscribe((res: any) => {
-        console.log(res)
+    convertedData.createdLeadId = (this.leadId) ? this.leadId : id;
+    if (this.convertedLeadId) {
+      this.leadService.updateConvertedLead(this.convertedLeadId, convertedData).subscribe((res: any) => {
         if (res.success) {
           localStorage.setItem("convertedLeadId", this.convertedLeadId);
-          console.log(res)
-          if(data == 'lead') {
+          if (data == 'lead') {
             this.router.navigate(['/existing-lead']);
           }
         }
@@ -92,11 +83,9 @@ export class ConvertLeadPage implements OnInit {
 
     } else {
       this.leadService.convertLead(convertedData).subscribe((res: any) => {
-        console.log(res)
         if (res.success) {
           localStorage.setItem("convertedLeadId", res.data.id);
-          console.log(res)
-          if(data == 'lead') {
+          if (data == 'lead') {
             this.router.navigate(['/existing-lead']);
           }
         }

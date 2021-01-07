@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
-import {LeadService} from '../../service/lead.service'
+import { LeadService } from '../../service/lead.service'
 import { Router } from '@angular/router';
 
 
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateCustomerPage implements OnInit {
   leadForm: any;
+
   constructor( private router: Router, private _formBuilder: FormBuilder, public leadService: LeadService,
      ) { }
 
@@ -28,48 +29,47 @@ export class CreateCustomerPage implements OnInit {
       techLead: new FormControl(),
       serviceReport: new FormControl(),
       customerFeedback: new FormControl(),
-      });
-       }
+    });
+  }
 
   remainingCalc(event) {
     let remaining = parseInt(localStorage.getItem('price')) - parseInt(event.target.value);
     this.leadForm.controls["remaining"].setValue(remaining);
- 
+
   }
 
   submit() {
     let id = localStorage.getItem('newLeadId');
     let data = this.leadForm.value;
-    data.createdLeadId  = id;
-    data.convertedLeadId  = localStorage.getItem('convertedLeadId');
-     this.leadService.customerProfile(data).subscribe((res: any) => {
-      console.log(res)
+    data.createdLeadId = id;
+    data.convertedLeadId = localStorage.getItem('convertedLeadId');
+    this.leadService.customerProfile(data).subscribe((res: any) => {
       alert(res)
       if (res.success) {
         // localStorage.setItem("newLeadId", res.data.id);
-        console.log(res)
         this.router.navigate(['/existing-customers']);
-      }}) 
-      
-  //     alert(data)
+      }
+    })
 
-  //     var link = this.leadService.API_URL +'/customerProfile'
+    //     alert(data)
 
-  //     this.http.post(link, data, {})
-  // .then(data => {
+    //     var link = this.leadService.API_URL +'/customerProfile'
 
-  //   alert(data.status);
-  //   alert(data.data); // data received by server
-  //   alert(data.headers);
+    //     this.http.post(link, data, {})
+    // .then(data => {
 
-  // })
-  // .catch(error => {
+    //   alert(data.status);
+    //   alert(data.data); // data received by server
+    //   alert(data.headers);
 
-  //   alert(error.status);
-  //   alert(error.error); // error message as string
-  //   alert(error.headers);
+    // })
+    // .catch(error => {
 
-  // });
+    //   alert(error.status);
+    //   alert(error.error); // error message as string
+    //   alert(error.headers);
+
+    // });
 
   }
 

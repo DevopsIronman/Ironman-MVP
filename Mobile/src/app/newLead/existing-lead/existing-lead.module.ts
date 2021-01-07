@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ExistingLeadPageRoutingModule } from './existing-lead-routing.module';
 
 import { ExistingLeadPage } from './existing-lead.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { ExistingLeadPage } from './existing-lead.page';
     FormsModule,
     IonicModule,
     ExistingLeadPageRoutingModule
+  ],
+  providers: [
+    CallNumber,
   ],
   declarations: [ExistingLeadPage]
 })

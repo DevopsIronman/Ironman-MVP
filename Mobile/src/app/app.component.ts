@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { NotificationPage} from './notification/notification.page';
+import { NotificationPage } from './notification/notification.page';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
-  login:boolean = false;
+  login: boolean = false;
   public selectedIndex = 0;
   public appPages = [
     {
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
       url: '/dashboard',
       icon: 'home'
     },
-   
+
     {
       title: 'Products',
       icon: 'cube',
@@ -68,17 +68,17 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'All service',
-     icon: 'construct',
-     children: [
-      {
-        title: 'Service History',
-        url: '/service-history',
-      },
-      {
-        title: 'Due for Service',
-        url: '/service-due',
-      },
-    ]
+      icon: 'construct',
+      children: [
+        {
+          title: 'Service History',
+          url: '/service-history',
+        },
+        {
+          title: 'Due for Service',
+          url: '/service-due',
+        },
+      ]
     },
     {
       title: 'Callbacks',
@@ -87,8 +87,17 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Feedback',
-      url: '/feedback',
-      icon: 'chatbubbles'
+      icon: 'chatbubbles',
+      children: [
+        {
+          title: 'Feedback list',
+          url: '/feedback-list',
+        },
+        {
+          title: 'Feedback',
+          url: '/feedback',
+        },
+      ]
     },
     {
       title: 'About Us',
@@ -107,7 +116,7 @@ export class AppComponent implements OnInit {
     }
   ];
   public labels = [];
-  subscribe:any;
+  subscribe: any;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -130,13 +139,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    let i:number =0
-    setInterval(function() {
-      console.log("success" ,i+1);
-    }, 10 * 60 * 100);
-    // const path = window.location.pathname.split('menu/')[1];
-    // if (path !== undefined) {
-    //   this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
-    // }
   }
 }

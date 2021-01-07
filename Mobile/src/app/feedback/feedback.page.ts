@@ -13,16 +13,15 @@ export class FeedbackPage implements OnInit {
   feedBackForm: any;
   id;
 
-  constructor(private router: Router,public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
+  constructor(private router: Router, public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
 
   ngOnInit() {
     this.id = this.activeRoute.snapshot.queryParams.id;
-    console.log(this.id);
     this.feedBackForm = this._formBuilder.group({
-      customerName: new FormControl('',[Validators.required]),
-      companyName: new FormControl('',[Validators.required]),
-      email: new FormControl('',[Validators.required]),
-      mobileNo: new FormControl('',[Validators.required, Validators.maxLength(11),Validators.minLength(10)]),
+      customerName: new FormControl('', [Validators.required]),
+      companyName: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      mobileNo: new FormControl('', [Validators.required, Validators.maxLength(11), Validators.minLength(10)]),
       rate: new FormControl(),
       satisfied: new FormControl(),
       accessibleManner: new FormControl(),
@@ -31,9 +30,8 @@ export class FeedbackPage implements OnInit {
       accessibleMannerComments: new FormControl(),
       problemComments: new FormControl(),
     });
-    if(this.id) {
+    if (this.id) {
       this.leadService.getFeedbackWithid(this.id).subscribe((res: any) => {
-        console.log(res)
         if (res.success) {
           this.feedBackForm.controls["customerName"].setValue(res.data[0].customerName);
           this.feedBackForm.controls["companyName"].setValue(res.data[0].companyName);
@@ -47,20 +45,17 @@ export class FeedbackPage implements OnInit {
           this.feedBackForm.controls["accessibleMannerComments"].setValue(res.data[0].accessibleMannerComments);
           this.feedBackForm.controls["problemComments"].setValue(res.data[0].problemComments);
 
-          
+
         }
       });
 
     }
   }
-rates;
+  rates;
   submit() {
-    console.log(this.feedBackForm.value);
-    this.rates  = (this.feedBackForm.value.problem + this.feedBackForm.value.accessibleManner + this.feedBackForm.value.satisfied) / 3;
-    console.log(this.rates)
+    this.rates = (this.feedBackForm.value.problem + this.feedBackForm.value.accessibleManner + this.feedBackForm.value.satisfied) / 3;
     this.feedBackForm.value.rate = this.rates;
     this.leadService.addFeedback(this.feedBackForm.value).subscribe((res: any) => {
-      console.log(res);
       this.feedBackForm.reset();
       this.router.navigate(['/dashboard']);
     })

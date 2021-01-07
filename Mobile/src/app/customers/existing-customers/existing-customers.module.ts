@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ExistingCustomersPageRoutingModule } from './existing-customers-routing.module';
 
 import { ExistingCustomersPage } from './existing-customers.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { ExistingCustomersPage } from './existing-customers.page';
     FormsModule,
     IonicModule,
     ExistingCustomersPageRoutingModule
+  ],
+  providers: [
+    CallNumber,
   ],
   declarations: [ExistingCustomersPage]
 })

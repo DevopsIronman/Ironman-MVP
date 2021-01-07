@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LeadService} from '../../service/lead.service'
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-existing-customers',
@@ -10,11 +11,10 @@ export class ExistingCustomersPage implements OnInit {
   customers: any;
   customersBackup: any;
   count=0;
-  constructor(public leadService: LeadService) { }
+  constructor(private callNumber: CallNumber, public leadService: LeadService) { }
 
   ngOnInit() {
     this.leadService.getCustomer().subscribe((res: any) => {
-      console.log(res)
       if (res.success) {
         this.customers = res.data;
         this.count = this.customers.length;
@@ -42,12 +42,16 @@ export class ExistingCustomersPage implements OnInit {
     this.ngOnInit();
   }
 
+  launchDialer(n:string){
+    this.callNumber.callNumber(n, true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer'));
+}
+
   view(i) {
-    console.log(i)
     this.customers[i].open = true
   }
   viewtoggle(i) {
-    console.log(i)
     this.customers[i].open = false
   }
 
