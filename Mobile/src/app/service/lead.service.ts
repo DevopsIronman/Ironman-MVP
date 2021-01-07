@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class LeadService {
 
-  public API_URL = 'http://localhost:8080';
+  public API_URL = environment.API_URL;
   constructor(private http: HttpClient) { }
 
   private extractData1(res: any) {
@@ -18,83 +18,81 @@ export class LeadService {
   }
 
   getLead(): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/').pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/').pipe(
       map(this.extractData1));
   }
 
   getFeedbacks(): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/feedbacks').pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/feedbacks').pipe(
       map(this.extractData1));
   }
   getFeedbackWithid(id): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/feedbacks/'+id).pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/feedbacks/' + id).pipe(
       map(this.extractData1));
   }
   getSingleLead(id): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/lead/'+id).pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/lead/' + id).pipe(
       map(this.extractData1));
   }
   getSingleConvertedLead(id): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/ConvertedLead/'+id).pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/ConvertedLead/' + id).pipe(
       map(this.extractData1));
   }
   getSingleConvertedLeadCB(id): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/ConvertedLeadCB/'+id).pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/ConvertedLeadCB/' + id).pipe(
       map(this.extractData1));
   }
   getCustomer(): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/customer').pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/customer').pipe(
       map(this.extractData1));
   }
   getCalBack(): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/callBack').pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/callBack').pipe(
       map(this.extractData1));
   }
   getCalBackcompleted(): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/callBackCompleted').pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/callBackCompleted').pipe(
       map(this.extractData1));
   }
   getCalBackrejected(): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/callBackrejected').pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/callBackrejected').pipe(
       map(this.extractData1));
   }
 
   getCustomerDetails(id): Observable<any> {
-    return this.http.get<any>(this.API_URL+'/api/createLead/customerDetails/'+ id).pipe(
+    return this.http.get<any>(this.API_URL + '/api/createLead/customerDetails/' + id).pipe(
       map(this.extractData1));
   }
 
   addLead(data): Observable<any> {
-    return this.http.post<any>(this.API_URL+'/api/createLead/', data).pipe(
+    return this.http.post<any>(this.API_URL + '/api/createLead/', data).pipe(
       map(this.extractData1));
   }
 
   addFeedback(data): Observable<any> {
-    return this.http.post<any>(this.API_URL+'/api/createLead/feedback', data).pipe(
+    return this.http.post<any>(this.API_URL + '/api/createLead/feedback', data).pipe(
       map(this.extractData1));
   }
 
   updateLead(id, data): Observable<any> {
-    return this.http.put<any>(this.API_URL+'/api/createLead/updateNewLead/'+id, data).pipe(
+    return this.http.put<any>(this.API_URL + '/api/createLead/updateNewLead/' + id, data).pipe(
       map(this.extractData1));
   }
   updateConvertedLead(id, data): Observable<any> {
-    console.log(true)
-    return this.http.put<any>(this.API_URL+'/api/createLead/updateConvertedLead/'+id, data).pipe(
+    return this.http.put<any>(this.API_URL + '/api/createLead/updateConvertedLead/' + id, data).pipe(
       map(this.extractData1));
   }
   updateTicket(id, data): Observable<any> {
-    console.log(true)
-    return this.http.put<any>(this.API_URL+'/api/createLead/updateTicket/'+id, data).pipe(
+    return this.http.put<any>(this.API_URL + '/api/createLead/updateTicket/' + id, data).pipe(
       map(this.extractData1));
   }
 
-  convertLead( data): Observable<any> {
-    return this.http.post<any>(this.API_URL+'/api/createLead/convertLead', data).pipe(
+  convertLead(data): Observable<any> {
+    return this.http.post<any>(this.API_URL + '/api/createLead/convertLead', data).pipe(
       map(this.extractData1));
   }
-  customerProfile( data): Observable<any> {
-    return this.http.post<any>(this.API_URL+'/api/createLead/customerProfile', data).pipe(
+  customerProfile(data): Observable<any> {
+    return this.http.post<any>(this.API_URL + '/api/createLead/customerProfile', data).pipe(
       map(this.extractData1));
   }
 }

@@ -1,39 +1,41 @@
 <ion-app>
-  
+
   <!-- <ion-split-pane contentId="main-content"> -->
-    <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
-        <ion-list id="inbox-list">
-          <ion-toolbar>
+  <ion-menu contentId="main-content" type="overlay">
+    <ion-content>
+      <ion-list id="inbox-list">
+        <ion-toolbar>
           <ion-img src="assets/images/smm_logo.png"></ion-img>
           <ion-list-header>SMM EQUIPMENTS</ion-list-header>
         </ion-toolbar>
-          <div *ngFor="let p of appPages">
-            <ion-menu-toggle *ngIf="p.url" >
-              <ion-item  [routerLink]="[p.url]" lines="none" routerDirection="root" routerLinkActive="active" detail="false">
-                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                <ion-label>{{ p.title }}</ion-label>
-              </ion-item>
-            </ion-menu-toggle>
-             <ion-item button *ngIf="p.children?.length > 0" (click)= "p.open = !p.open" 
-               [class.active-parent]="p.open" detail="false" lines="none">
-               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                
-               <ion-label>{{ p.title }}</ion-label>
+        <div *ngFor="let p of appPages">
+          <ion-menu-toggle *ngIf="p.url">
+            <ion-item [routerLink]="[p.url]" lines="none" routerDirection="root" routerLinkActive="active"
+              detail="false">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-item button *ngIf="p.children?.length > 0" (click)="p.open = !p.open" [class.active-parent]="p.open"
+            detail="false" lines="none">
+            <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+
+            <ion-label>{{ p.title }}</ion-label>
           </ion-item>
-          <div *ngIf = "p.open">
-            <ion-menu-toggle  >
-              <ion-item class = "sub-item" detail="false"  *ngFor="let sub of p.children" [routerLink]="[sub.url]" lines="none" routerDirection="root" routerLinkActive="active">
+          <div *ngIf="p.open">
+            <ion-menu-toggle>
+              <ion-item class="sub-item" detail="false" *ngFor="let sub of p.children" [routerLink]="[sub.url]"
+                lines="none" routerDirection="root" routerLinkActive="active">
                 <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
                 <!-- <ion-icon name="arrow-forward"></ion-icon> -->
                 <ion-label>{{sub.title}}</ion-label>
               </ion-item>
             </ion-menu-toggle>
 
-         
+
 
           </div>
-<!--           
+          <!--           
           <div *ngFor="let p of appPages; let i = index">
           <ion-menu-toggle  auto-hide="false" >
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
@@ -57,10 +59,10 @@
               </ion-item>
             </ion-menu-toggle>
           </ion-list> -->
-          </div>
-        </ion-list>
+        </div>
+      </ion-list>
 
-        <!-- <ion-list id="labels-list">
+      <!-- <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
@@ -68,10 +70,10 @@
             <ion-label>{{ label }}</ion-label>
           </ion-item>
         </ion-list> -->
-      </ion-content>
-    </ion-menu>
-    <ion-router-outlet id="main-content"></ion-router-outlet>
-  
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
   <!-- </ion-split-pane> -->
   <!-- <div *ngIf='!login'> -->
   <!-- <ion-grid>
@@ -96,5 +98,5 @@
       </ion-col>
     </ion-row>
   </ion-grid> -->
-<!-- </div> -->
+  <!-- </div> -->
 </ion-app>

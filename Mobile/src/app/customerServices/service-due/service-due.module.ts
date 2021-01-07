@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ServiceDuePageRoutingModule } from './service-due-routing.module';
 
 import { ServiceDuePage } from './service-due.page';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { ServiceDuePage } from './service-due.page';
     FormsModule,
     IonicModule,
     ServiceDuePageRoutingModule
+  ],
+  providers: [
+    CallNumber,
   ],
   declarations: [ServiceDuePage]
 })

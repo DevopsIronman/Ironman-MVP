@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LeadService} from '../../service/lead.service'
+import { LeadService } from '../../service/lead.service'
 
 @Component({
   selector: 'app-feedback-list',
@@ -7,7 +7,7 @@ import {LeadService} from '../../service/lead.service'
   styleUrls: ['./feedback-list.page.scss'],
 })
 export class FeedbackListPage implements OnInit {
-feedbacks;
+  feedbacks;
   constructor(public leadService: LeadService) { }
 
   ngOnInit() {
@@ -16,7 +16,6 @@ feedbacks;
 
   getFeedbacks() {
     this.leadService.getFeedbacks().subscribe((res: any) => {
-      console.log(res)
       if (res.success) {
         this.feedbacks = res.data;
       }

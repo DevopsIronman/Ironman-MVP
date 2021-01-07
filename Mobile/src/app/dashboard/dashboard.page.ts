@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LeadService} from '../service/lead.service'
+import { LeadService } from '../service/lead.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -8,14 +8,14 @@ import {LeadService} from '../service/lead.service'
 })
 export class DashboardPage implements OnInit {
 
-  leadsCount:number =0;
-  customerCount:number =0;
+  leadsCount: number = 0;
+  customerCount: number = 0;
   // allCallbackCount:number =0;
-  allCallbackCount:number =0;
-  completedCallbackCount:number =0;
-  pendingCallBackCount:number =0;
-  feedbackCount:number =0;
-  
+  allCallbackCount: number = 0;
+  completedCallbackCount: number = 0;
+  pendingCallBackCount: number = 0;
+  feedbackCount: number = 0;
+
   constructor(public leadService: LeadService) { }
 
   ngOnInit() {
@@ -26,7 +26,7 @@ export class DashboardPage implements OnInit {
 
   }
 
-  ionViewWillEnter (){
+  ionViewWillEnter() {
     this.leadCount();
     this.customersCount();
     this.pendingCallback();
@@ -34,10 +34,9 @@ export class DashboardPage implements OnInit {
     this.getFeedbacks();
 
   }
-  
+
   leadCount() {
     this.leadService.getLead().subscribe((res: any) => {
-      console.log(res)
       if (res.success) {
         this.leadsCount = res.data.length;
       }
@@ -46,7 +45,6 @@ export class DashboardPage implements OnInit {
 
   customersCount() {
     this.leadService.getCustomer().subscribe((res: any) => {
-      console.log(res)
       if (res.success) {
         this.customerCount = res.data.length;
       }
@@ -63,8 +61,7 @@ export class DashboardPage implements OnInit {
 
   completedCallbacks() {
     this.leadService.getCalBackcompleted().subscribe((res: any) => {
-      console.log(res)
-      if (res.success) {
+     if (res.success) {
         this.completedCallbackCount = res.data.length;
         this.allCallbackCount = this.completedCallbackCount + this.pendingCallBackCount;
       }
@@ -73,7 +70,6 @@ export class DashboardPage implements OnInit {
 
   getFeedbacks() {
     this.leadService.getFeedbacks().subscribe((res: any) => {
-      console.log(res)
       if (res.success) {
         this.feedbackCount = res.data.length;
       }

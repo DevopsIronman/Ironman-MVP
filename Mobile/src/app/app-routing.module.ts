@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   
@@ -40,14 +40,6 @@ const routes: Routes = [
     path: 'existing-customers',
     loadChildren: () => import('./customers/existing-customers/existing-customers.module').then( m => m.ExistingCustomersPageModule)
   },
-  // {
-  //   path: 'existing-lead',
-  //   loadChildren: () => import('./lead/existing-lead/existing-lead.module').then( m => m.ExistingLeadPageModule)
-  // },
-  // {
-  //   path: 'create-lead',
-  //   loadChildren: () => import('./lead/create-lead/create-lead.module').then( m => m.CreateLeadPageModule)
-  // },
   {
     path: 'product-purchased',
     loadChildren: () => import('./product/product-purchased/product-purchased.module').then( m => m.ProductPurchasedPageModule)
@@ -76,10 +68,10 @@ const routes: Routes = [
     path: 'customerdetails',
     loadChildren: () => import('./customers/customerdetails/customerdetails.module').then( m => m.CustomerdetailsPageModule)
   },
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  // },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
   {
     path: 'notification',
     loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
