@@ -10,6 +10,7 @@ export class ProductPage implements OnInit {
 
   equipments = [
     {
+      
       Title: "Rock Breaker",
       desc: "SMM Group Constantly strives to maximize the satisfaction of our customers across India by offering High quality World class products at competitive pricing along with prompt and professional after -sales services. The use of advanced hydraulics, materials technology, strength calculations, impact wave theory and production technology have enabled SMM to create hydraulic Rock Breakers that are powerful, durable, cost-effective and the undisputed leaders in their class.",
       img: "rock-breaker.png",
