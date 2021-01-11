@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { LeadService } from '../../service/lead.service'
 import { ActivatedRoute, Router } from '@angular/router';
+import csc from 'country-state-city'
+
 @Component({
   selector: 'app-new-lead',
   templateUrl: './new-lead.page.html',
@@ -12,14 +14,20 @@ export class NewLeadPage implements OnInit {
   leads: any;
   leadId: any;
   constructor(private router: Router, public activeRoute: ActivatedRoute, private _formBuilder: FormBuilder, public leadService: LeadService) { }
-
+  countries;
+  states;
+  cities;
   ngOnInit() {
+    this.countries = csc.getAllCountries();
+    // this.states = csc.getAllStates();
+    // this.cities = csc.getAllCities();
     this.leadForm = this._formBuilder.group({
       customerName: new FormControl('', Validators.required),
       companyName: new FormControl(),
       address: new FormControl(),
       city: new FormControl(),
       state: new FormControl(),
+      country: new FormControl(),
       pincode: new FormControl(),
       gstIn: new FormControl(),
       mobileNo: new FormControl(),
@@ -75,6 +83,23 @@ export class NewLeadPage implements OnInit {
         }
       });
     }
+  }
+
+
+  getState(code) {
+    let countrycode = this.countries.find((element) =>{
+      return element.name == code.target.value
+    }) ;
+   this.states =csc.getStatesOfCountry(countrycode.isoCode)
+    console.log(code);
+  }
+  
+  getcity(code) {
+    let stateCode = this.states.find((element) =>{
+      return element.name == code.target.value
+    }) ;
+   this.cities =csc.getCitiesOfState(stateCode.countryCode, stateCode.isoCode);
+    console.log(code);
   }
 
   submit(data) {
