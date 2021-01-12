@@ -74,8 +74,19 @@
 
         <ion-item *ngIf=dateCheck>
           <ion-label position="floating">Date</ion-label>
-          <ion-datetime formControlName='callBackDate' [min]="minDate" max="2040-10-31"
-            displayFormat="MMM DD, YY h:mm A" [(ngModel)]="callBackdate"></ion-datetime>
+          <!-- <ion-datetime formControlName='callBackDate' [min]="minDate" max="2040-10-31"
+            displayFormat="MMM DD, YY h:mm A" [(ngModel)]="callBackdate"></ion-datetime> -->
+            <li-ionic4-datepicker [(ngModel)]="(callBackDate == 'Data inválida')? myDate:callBackDate"
+            formControlName='callBackDate' [inputDateConfig]="datePickerObj" >
+          </li-ionic4-datepicker>
+        </ion-item>
+        <ion-item *ngIf=dateCheck>
+          <ion-label position="floating">Time</ion-label>
+          <!-- <ion-datetime formControlName='callBackDate' [min]="minDate" max="2040-10-31"
+            displayFormat="MMM DD, YY h:mm A" [(ngModel)]="callBackdate"></ion-datetime> -->
+            <li-ionic-timepicker [(ngModel)]="callBackTime" formControlName='callBackTime' [inputTimeConfig]="timePickerObj"
+         ></li-ionic-timepicker>
+        
         </ion-item>
 
         <ion-item>

@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { ConvertLeadPageRoutingModule } from './convert-lead-routing.module';
 
 import { ConvertLeadPage } from './convert-lead.page';
+import { Ionic4DatepickerModule } from '@logisticinfotech/ionic4-datepicker';
+import { IonicTimepickerModule } from  '@logisticinfotech/ionic-timepicker';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ConvertLeadPage } from './convert-lead.page';
     FormsModule,
     IonicModule,
     ConvertLeadPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ionic4DatepickerModule,
+    IonicTimepickerModule,
   ],
   declarations: [ConvertLeadPage]
 })
