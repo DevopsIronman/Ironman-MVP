@@ -22,6 +22,23 @@ export class LeadService {
       map(this.extractData1));
   }
 
+  getHotleads(): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/api/createLead/hot').pipe(
+      map(this.extractData1));
+  }
+  getColdleads(): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/api/createLead/cold').pipe(
+      map(this.extractData1));
+  }
+  getWarmleads(): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/api/createLead/warm').pipe(
+      map(this.extractData1));
+  }
+  getLostleads(): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/api/createLead/lost').pipe(
+      map(this.extractData1));
+  }
+
   getFeedbacks(): Observable<any> {
     return this.http.get<any>(this.API_URL + '/api/createLead/feedbacks').pipe(
       map(this.extractData1));

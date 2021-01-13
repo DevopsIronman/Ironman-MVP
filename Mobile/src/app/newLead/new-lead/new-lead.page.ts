@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl, FormControl } from
 import { LeadService } from '../../service/lead.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import csc from 'country-state-city'
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-new-lead',
@@ -30,7 +31,7 @@ export class NewLeadPage implements OnInit {
       country: new FormControl(),
       pincode: new FormControl(),
       gstIn: new FormControl(),
-      mobileNo: new FormControl(),
+      mobileNo: new FormControl('', Validators.required),
       mobileNo2: new FormControl(),
       source: new FormControl(),
       mailId: new FormControl(),
@@ -41,18 +42,21 @@ export class NewLeadPage implements OnInit {
       purpose: new FormControl(),
       product: new FormControl(),
       machineMakeModel: new FormControl(),
+      year: new FormControl(),
       machineWorkingHours: new FormControl(),
       existingBreaker: new FormControl(),
       pipelines: new FormControl(),
       leadAssigned: new FormControl(),
       leadAssignedTo: new FormControl(),
       convertedStatus: new FormControl(),
+      customerStatus: new FormControl(),
       recommendedBreaker: new FormControl(),
 
     });
     this.leadId = this.activeRoute.snapshot.queryParams.lead;
 
     if (this.leadId) {
+      
       this.leadService.getSingleLead(this.leadId).subscribe((res: any) => {
         if (res.success) {
           this.leads = res.data[0];
@@ -61,6 +65,7 @@ export class NewLeadPage implements OnInit {
           this.leadForm.controls["address"].setValue(this.leads.address);
           this.leadForm.controls["city"].setValue(this.leads.city);
           this.leadForm.controls["state"].setValue(this.leads.state);
+          this.leadForm.controls["country"].setValue(this.leads.country);
           this.leadForm.controls["pincode"].setValue(this.leads.pincode);
           this.leadForm.controls["gstIn"].setValue(this.leads.gstIn);
           this.leadForm.controls["mobileNo"].setValue(this.leads.mobileNo);
@@ -73,12 +78,14 @@ export class NewLeadPage implements OnInit {
           this.leadForm.controls["product"].setValue(this.leads.product);
           this.leadForm.controls["purpose"].setValue(this.leads.purpose);
           this.leadForm.controls["machineMakeModel"].setValue(this.leads.machineMakeModel);
+          this.leadForm.controls["year"].setValue(this.leads.year);
           this.leadForm.controls["existingBreaker"].setValue(this.leads.existingBreaker);
           this.leadForm.controls["pipelines"].setValue(this.leads.pipelines);
           this.leadForm.controls["leadAssigned"].setValue(this.leads.leadAssigned);
           this.leadForm.controls["leadAssignedTo"].setValue(this.leads.leadAssignedTo);
           this.leadForm.controls["convertedStatus"].setValue(this.leads.convertedStatus);
           this.leadForm.controls["recommendedBreaker"].setValue(this.leads.recommendedBreaker);
+          this.leadForm.controls["customerStatus"].setValue(this.leads.customerStatus);
           this.leadForm.controls["machineWorkingHours"].setValue(this.leads.machineWorkingHours);
         }
       });
@@ -137,7 +144,6 @@ export class NewLeadPage implements OnInit {
     } else if (event.target.value == 'CAT') {
       this.leadForm.controls["recommendedBreaker"].setValue('450S');
     } else {
-      // this.leadForm.controls["recommendedBreaker"].value = "810HS";
       this.leadForm.controls["recommendedBreaker"].setValue('810HS');
     }
   }

@@ -48,6 +48,7 @@ export class LoginPage implements OnInit {
           localStorage.setItem('logRole', rolecheck)
           this.router.navigate(['/dashboard']);
         }
+        this.loginForm.reset();
       } else {
         this.loginForm.controls['email'].setErrors({ 'incorrect': true });
         this.loginForm.controls['password'].setErrors({ 'incorrect': true });

@@ -4,7 +4,6 @@ import { LeadService } from '../../service/lead.service'
 import { Router } from '@angular/router';
 
 
-
 @Component({
   selector: 'app-create-customer',
   templateUrl: './create-customer.page.html',
@@ -12,9 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CreateCustomerPage implements OnInit {
   leadForm: any;
-
-  constructor( private router: Router, private _formBuilder: FormBuilder, public leadService: LeadService,
-     ) { }
+  constructor(private router: Router, private _formBuilder: FormBuilder, public leadService: LeadService,
+    ) { }
 
   ngOnInit() {
     this.leadForm = this._formBuilder.group({
@@ -44,7 +42,6 @@ export class CreateCustomerPage implements OnInit {
     data.createdLeadId = id;
     data.convertedLeadId = localStorage.getItem('convertedLeadId');
     this.leadService.customerProfile(data).subscribe((res: any) => {
-      alert(res)
       if (res.success) {
         // localStorage.setItem("newLeadId", res.data.id);
         this.router.navigate(['/existing-customers']);

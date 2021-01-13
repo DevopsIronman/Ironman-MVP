@@ -10,21 +10,7 @@
 <ion-content>
 
   <ion-card>
-
-    <!-- <div>
-<div id="crumbs">
-      <ul>
-        <li><a href="#">Step 1</a></li>
-      </ul>
-    </div>
-
-    </div> -->
-
     <div class="column">
-
-
-      <!--  -->
-
       <div></div><br>
       <form name="leadForm" [formGroup]="leadForm">
         <ion-item style="width: 100%;">
@@ -169,6 +155,10 @@
           </ion-select>
         </ion-item>
         <ion-item>
+          <ion-label position="floating">Year</ion-label>
+          <ion-input formControlName="year"></ion-input>
+        </ion-item>
+        <ion-item>
           <ion-label position="floating">Breaker</ion-label>
           <ion-select interface="popover" formControlName="existingBreaker">
             <ion-select-option value="Yes">Yes</ion-select-option>
@@ -207,13 +197,22 @@
           <ion-label position="floating">Product</ion-label>
           <ion-input formControlName="product"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item >
+          <ion-label position="floating">Customer Status</ion-label>
+          <ion-select interface="popover" formControlName="customerStatus">
+            <ion-select-option value="Hot">Hot</ion-select-option>
+            <ion-select-option value="Warm">Warm</ion-select-option>
+            <ion-select-option value="Cold">Cold</ion-select-option>
+            <ion-select-option value="Lost">Lost</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item hidden>
           <ion-label position="floating">Converted Status</ion-label>
           <ion-input formControlName="convertedStatus"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Recommended Breaker</ion-label>
-          <ion-input [(ngModel)]="recommendedBreaker" formControlName="recommendedBreaker"></ion-input>
+          <ion-input formControlName="recommendedBreaker"></ion-input>
         </ion-item>
 
         <div class="btn">

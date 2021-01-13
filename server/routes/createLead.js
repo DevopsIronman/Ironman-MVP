@@ -31,6 +31,42 @@ router.get('/', (req, res) => {
         });
     })
 })
+router.get('/hot', (req, res) => {
+    return new Promise((resolve, reject) => {
+        CreateLead.findAll({ where: { deleteStatus: false, convertedStatus: ["new", "converted"], customerStatus: "Hot"  },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+router.get('/cold', (req, res) => {
+    return new Promise((resolve, reject) => {
+        CreateLead.findAll({ where: { deleteStatus: false, convertedStatus: ["new", "converted"], customerStatus: "Cold"  },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+router.get('/warm', (req, res) => {
+    return new Promise((resolve, reject) => {
+        CreateLead.findAll({ where: { deleteStatus: false, convertedStatus: ["new", "converted"], customerStatus: "Warm"  },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
+router.get('/lost', (req, res) => {
+    return new Promise((resolve, reject) => {
+        CreateLead.findAll({ where: { deleteStatus: false, convertedStatus: ["new", "converted"], customerStatus: "Lost" },  }).then(function (result) {
+            sendSuccess(res, result);
+        }).catch(function (err) {
+            sendError(res, err);
+        });
+    })
+})
 
 router.get('/feedbacks', (req, res) => {
     return new Promise((resolve, reject) => {
