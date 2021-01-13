@@ -25,6 +25,18 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING(250),
             field: 'city'
         },
+        country: {
+            type: DataTypes.STRING(250),
+            field: 'country'
+        },
+        year: {
+            type: DataTypes.STRING(250),
+            field: 'year'
+        },
+        customerStatus: {
+            type: DataTypes.STRING(250),
+            field: 'customer_status'
+        },
         state: {
             type: DataTypes.STRING(250),
             field: 'state'

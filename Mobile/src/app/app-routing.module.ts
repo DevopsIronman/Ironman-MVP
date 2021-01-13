@@ -91,6 +91,22 @@ const routes: Routes = [
   {
     path: 'feedback-list',
     loadChildren: () => import('./feedback/feedback-list/feedback-list.module').then( m => m.FeedbackListPageModule)
+  },
+  {
+    path: 'hotleads',
+    loadChildren: () => import('./hotleads/hotleads.module').then( m => m.HotleadsPageModule)
+  },
+  {
+    path: 'cold-leads',
+    loadChildren: () => import('./cold-leads/cold-leads.module').then( m => m.ColdLeadsPageModule)
+  },
+  {
+    path: 'warm-leads',
+    loadChildren: () => import('./warm-leads/warm-leads.module').then( m => m.WarmLeadsPageModule)
+  },
+  {
+    path: 'lost-leads',
+    loadChildren: () => import('./lost-leads/lost-leads.module').then( m => m.LostLeadsPageModule)
   }
   
   
